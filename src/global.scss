@@ -34,4 +34,68 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+//@import "@ionic/angular/css/palettes/dark.system.css";
+body.dark {
+    --ion-background-color: #121212;
+    --ion-text-color: #ffffff;
+    --ion-color-primary: #4e8cff;
+    --ion-color-secondary: #64d2ff;
+  }
+
+  body.dark {
+    --ion-background-color: #121212;
+    --ion-text-color: #ffffff;
+  
+    --ion-color-primary: #9b59b6; /* Roxo principal */
+    --ion-color-primary-rgb: 155, 89, 182;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #874ea1;
+    --ion-color-primary-tint: #a96bc0;
+  
+    --ion-item-background: #1e1e1e;
+    --ion-toolbar-background: #1e1e1e;
+    --ion-card-background: #1e1e1e;
+  }
+  ion-item {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  ion-item:hover {
+    --background: var(--ion-color-primary-tint);
+    --color: var(--ion-color-primary-contrast);
+  }
+  ion-icon {
+    transition: color 0.3s ease;
+  }
+  ion-item.selected {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+    border-radius: 10px;
+  }
+  
+  ion-menu ion-item {
+    --transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 8px;
+    margin: 4px 8px;
+  }
+  
+  ion-menu ion-item:hover {
+    background-color: rgba(100, 100, 255, 0.1);
+    color: #5a00e0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  ion-menu ion-item ion-icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  ion-menu ion-item:hover ion-icon {
+    transform: scale(1.2) rotate(-5deg);
+    color: #5a00e0;
+  }
+  
+  /* Dark mode - ícones com roxinho claro */
+  body.dark ion-menu ion-item:hover ion-icon {
+    color: #1eff00;
+  }
+  

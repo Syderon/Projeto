@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoginPage } from './pages/login/login.page';  // Importe a página
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    path: 'cadastro',
+    loadChildren: () => import('./pages/cadastro/cadastro.module').then(m => m.CadastroPageModule)
   },
   {
     path: 'home',
@@ -26,7 +26,20 @@ const routes: Routes = [
   {
     path: 'recentes',
     loadChildren: () =>
-      import('./pages/recentes/recentes.module').then((m) => m.RecentesModule),
+      import('./pages/recentes/recentes.module').then((m) => m.recentes),
+  },
+  {
+    path: '',
+    component: LoginPage,  // Rota inicial
+  },
+  {
+    path: 'login',
+    component: LoginPage,  // Rota para a página de login
+  },
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full',
   },
 ];
 

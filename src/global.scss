@@ -94,8 +94,14 @@ body.dark {
     color: #5a00e0;
   }
   
-  /* Dark mode - ícones com roxinho claro */
-  body.dark ion-menu ion-item:hover ion-icon {
-    color: #1eff00;
+  
+  body.dark ion-icon {
+    color: #b388eb ; /* ou qualquer outra cor que fique visível */
+  }
+  .icone-dark-ativo {
+    color: #FFD700 !important;  /* Cor amarela */
+    text-shadow: 0 0 8px #FFD700, 0 0 16px #FFA500 !important;  /* Brilho amarelo */
+    transform: scale(1.15);  /* Aumentando um pouco o ícone */
+    transition: all 0.10s ease-in-out;  /* Efeito suave */
   }
   

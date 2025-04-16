@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Cadastro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+    <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input formControlName="nome"></ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="cadastroForm.get('nome')?.touched && cadastroForm.get('nome')?.invalid">
+        Nome é obrigatório.
+      </ion-note>
+  
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="cadastroForm.get('email')?.touched && cadastroForm.get('email')?.invalid">
+        Email válido é obrigatório.
+      </ion-note>
+  
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" formControlName="senha"></ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="cadastroForm.get('senha')?.touched && cadastroForm.get('senha')?.invalid">
+        Senha é obrigatória.
+      </ion-note>
+  
+      <ion-item>
+        <ion-label position="floating">Celular</ion-label>
+        <ion-input type="tel" formControlName="celular"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Avatar (URL)</ion-label>
+        <ion-input type="text" formControlName="avatar"></ion-input>
+      </ion-item>
+  
+      <ion-button expand="full" type="submit" [disabled]="cadastroForm.invalid">
+        Cadastrar
+      </ion-button>
+    </form>
+  </ion-content>
+  

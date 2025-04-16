@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    
+    <!-- Campo de Email -->
+    <ion-list>
+      <ion-item>
+        <ion-input 
+          labelPlacement="stacked" 
+          label="Email" 
+          placeholder="email@domain.com" 
+          type="email" 
+          formControlName="email">
+          <ion-icon slot="start" name="mail" aria-hidden="true"></ion-icon> <!-- Ícone de email -->
+        </ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-text color="danger" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+      <p>Email inválido.</p>
+    </ion-text>
+
+    <!-- Campo de Senha -->
+    <ion-list>
+      <ion-item lines="inset">
+        <ion-icon name="lock-closed" slot="start"></ion-icon>
+        <ion-input
+          [type]="passwordVisible ? 'text' : 'password'"
+          placeholder="Digite sua senha"
+          formControlName="password">
+        </ion-input>
+        <ion-button fill="clear" slot="end" (click)="togglePasswordVisibility()" type="button">
+          <ion-icon [name]="passwordVisible ? 'eye-off' : 'eye'"></ion-icon>
+        </ion-button>
+      </ion-item>
+      
+    </ion-list>
+    <ion-text color="danger" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+      <p>Senha deve ter ao menos 6 caracteres.</p>
+    </ion-text>
+
+    <!-- Botão de Login -->
+    <ion-button expand="full" type="submit" [disabled]="loginForm.invalid">
+      Entrar
+    </ion-button>
+  </form>
+</ion-content>

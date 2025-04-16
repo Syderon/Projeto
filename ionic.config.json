@@ -1,5 +1,7 @@
 {
   "name": "MundodaLeitura",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

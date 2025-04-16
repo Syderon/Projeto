@@ -3,13 +3,21 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button> <!-- Ícone do menu -->
     </ion-buttons>
-    <ion-title>Início</ion-title>
+    <ion-title class="title-center">Início</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="home-container">
-    <h2>Bem-vindo ao Mangekyou</h2>
+    <h2>Bem-vindo ao Mundo da Leitura</h2>
     <p>Escolha um gênero no menu para começar sua leitura.</p>
   </div>
 </ion-content>

@@ -1,0 +1,52 @@
+// Centraliza todo o conteúdo da tela
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  height: 100%;
+  background: #f4f4f4;
+}
+
+// Nome e slogan do app
+.branding {
+  text-align: center;
+  margin-bottom: 32px;
+
+  .app-name {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .slogan {
+    font-size: 14px;
+    color: #666;
+  }
+}
+
+// Formulário com campos centralizados
+.login-form {
+  width: 100%;
+  max-width: 320px;
+}
+
+// Estiliza os campos de entrada
+.custom-input {
+  --background: #fff;
+  --border-radius: 10px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  align-items: center;
+}
+
+// Ícone do olho
+.eye-icon {
+  font-size: 20px;
+  color: #888;
+  cursor: pointer;
+}

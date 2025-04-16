@@ -17,7 +17,6 @@
             <p>email@exemplo.com</p>
           </div>
         </div>
-        
 
         <ion-menu-toggle auto-hide="false">
           <ion-item routerLink="/home" routerDirection="root">
@@ -26,7 +25,7 @@
           </ion-item>
 
           <ion-item routerLink="/generos" routerDirection="root">
-            <ion-icon name="grid-outline" slot="start"></ion-icon>
+            <ion-icon name="list" slot="start"></ion-icon>
             <ion-label>Gêneros</ion-label>
           </ion-item>
 
@@ -40,29 +39,27 @@
             <ion-label>Recentes</ion-label>
           </ion-item>
         </ion-menu-toggle>
-        <ion-item lines="full"></ion-item> <!-- Linha separadora -->
+        
+        <ion-item lines="full"></ion-item>
 
-          <ion-item lines="none" button (click)="toggleDarkMode()">
-            <ion-icon name="moon-outline" slot="start"></ion-icon>
-            <ion-label>Modo Escuro</ion-label>
-          </ion-item>
+        <ion-item lines="none" button (click)="toggleDarkMode()">
+          <ion-icon name="moon-outline" slot="start" [ngClass]="{'icone-dark-ativo': isDarkMode}"></ion-icon>
+          <ion-label>Modo Escuro</ion-label>
+        </ion-item>
 
-          <ion-item lines="none">
-            <ion-label class="copyright">
-              <p>© 2025 Mundo da Leitura</p>
-              <p>Desenvolvido por Fulano...</p>
-              <p>Prof. Responsável: Davi Barros</p>
-            </ion-label>
-          </ion-item>
-          
+        <ion-item lines="none">
+          <ion-label class="copyright">
+            <p>© 2025 Mundo da Leitura</p>
+            <p>Desenvolvido por Fulano...</p>
+            <p>Prof. Responsável: Davi Barros</p>
+          </ion-label>
+        </ion-item>
 
       </ion-list>
     </ion-content>
   </ion-menu>
 
-  
-
-  <div class="ion-page" id="main-content">
+  <div id="main-content" class="ion-page">
     <ion-router-outlet></ion-router-outlet>
   </div>
 </ion-app>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cadastro',
@@ -8,8 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CadastroPage implements OnInit {
   cadastroForm!: FormGroup;
+  avatarImage: any = null;
 
-  constructor(private fb: FormBuilder) {}
+  @ViewChild('avatarInput') avatarInputRef!: ElementRef;
+
+  constructor(private fb: FormBuilder, private navCtrl: NavController) {}
 
   ngOnInit() {
     this.cadastroForm = this.fb.group({
@@ -21,12 +25,32 @@ export class CadastroPage implements OnInit {
     });
   }
 
+  abrirSeletorDeImagem() {
+    this.avatarInputRef.nativeElement.click();
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.avatarImage = file;
+      console.log("Imagem selecionada:", this.avatarImage);
+    }
+  }
+
+  voltar() {
+    this.navCtrl.back();
+  }
+
   onSubmit() {
     if (this.cadastroForm.valid) {
       console.log('Dados cadastrados:', this.cadastroForm.value);
-      // Aqui você pode enviar os dados para sua API ou salvar no localStorage
     } else {
       console.log('Formulário inválido');
     }
+  }
+
+  isCampoInvalido(campo: string): boolean {
+    const control = this.cadastroForm.get(campo);
+    return !!(control && control.invalid && (control.touched || control.dirty));
   }
 }

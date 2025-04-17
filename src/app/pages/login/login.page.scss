@@ -1,52 +1,114 @@
-// Centraliza todo o conteúdo da tela
-.login-container {
-  display: flex;
-  flex-direction: column;
+ion-content {
+  background: linear-gradient(135deg, #3e3e3e, #ffffff, #5b5b5b,);
+  backdrop-filter: blur(5px); /* Opcional: efeito de vidro fosco */
+  --background: linear-gradient(0deg, rgba(0, 0, 0, 0.1)) 
+
+}
+
+.login-section {
+  
+  display:flexbox;
+  margin-top: 0px;
   justify-content: center;
   align-items: center;
-  padding: 24px;
   height: 100%;
-  background: #f4f4f4;
 }
 
-// Nome e slogan do app
-.branding {
-  text-align: center;
-  margin-bottom: 32px;
-
-  .app-name {
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
-  }
-
-  .slogan {
-    font-size: 14px;
-    color: #666;
-  }
-}
-
-// Formulário com campos centralizados
-.login-form {
+.login-container {
+  background: transparent !important;
+  max-width: 500px;
   width: 100%;
-  max-width: 320px;
+  padding: 20px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(70, 70, 70, 0.1);
+  backdrop-filter: blur(5px); /* Opcional: efeito de vidro fosco */
+  border: 1px;
+  border-radius: 20px;
+  border-color: #040404;
+  border-style:ridge;
 }
 
-// Estiliza os campos de entrada
-.custom-input {
-  --background: #fff;
-  --border-radius: 10px;
-  --padding-start: 10px;
-  --padding-end: 10px;
-  border: 1px solid #ccc;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  align-items: center;
+.logo-container img {
+  width: 450px;
+  margin: 0 auto 20px;
+  display: block;
+  border: 50px;
+  border-radius: 50%;
 }
 
-// Ícone do olho
-.eye-icon {
-  font-size: 20px;
-  color: #888;
-  cursor: pointer;
+.heading h1 {
+  font-size: 1.6rem;
+  font-weight: bolder;
+  margin-bottom: 15px;
+  padding:10px;
+}
+
+.heading p {
+  font-size: 1rem;
+  color: #7b7b7b;
+  margin-bottom: 20px;
+}
+
+.login-form { 
+  .form-input {
+    margin-bottom: 15px;
+    ion-item {
+      --padding-start: 0;
+    }
+    ion-icon {
+      font-size: 20px;
+    }
+    
+  }
+
+  ion-button.login-button {
+    --background: #f9b801;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+}
+
+.item-native::after {
+  background: transparent !important;
+
+}
+
+/* Tornar os inputs transparentes */
+ion-item {
+  --background: transparent !important; /* Faz o fundo transparente */
+  --border-color: transparent !important; /* Remove a borda */
+}
+
+ion-input {
+  --background: transparent !important; /* Faz o fundo transparente */
+  --placeholder-color: #888; /* Cor do placeholder, se necessário */
+  color: #fff; /* Cor do texto inserido (pode ser ajustada) */
+}
+
+ion-label {
+  color: #fff !important; /* Cor do texto da label, se quiser */
+}
+/* Estilo para o foco */
+ion-input:focus {
+  --box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5); /* Efeito de foco */
+  --border-color: #007bff; /* Cor da borda ao focar */
+}
+/* Personalizando ícones de email e senha */
+ion-item ion-icon {
+  font-size: 30px; /* Tamanho do ícone */
+  color: #313131; /* Cor do ícone (você pode personalizar conforme necessário) */
+}
+
+/* Personalizando ícone de email */
+ion-item:nth-of-type(1) ion-icon {
+  font-size: 32px; /* Tamanho específico para o ícone de email */
+  color: #272727; /* Cor para o ícone de email */
+  
+}
+
+/* Personalizando ícone de senha */
+ion-item:nth-of-type(2) ion-icon {
+  font-size: 32px; /* Tamanho específico para o ícone de senha */
+  color: #4caf50; /* Cor para o ícone de senha */
 }

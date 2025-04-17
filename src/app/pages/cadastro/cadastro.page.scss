@@ -1,0 +1,103 @@
+
+/* Personalizando o botão de voltar */
+.voltar-button {
+    --background: transparent;
+    --color: #007bff;
+    padding-left: 10px;
+  }
+  
+  .voltar-icon {
+    font-size: 24px;
+  }
+  
+  /* Estilo geral dos campos do formulário */
+  .form-item {
+    margin-bottom: 20px;
+  }
+  
+  /* Estiliza os campos de entrada com rótulo flutuante */
+  ion-item {
+    --highlight-color-focused: #007bff;
+    --border-color: #ccc;
+    border-radius: 8px;
+  }
+  
+  /* Estilo dos inputs */
+  ion-input {
+    padding: 10px;
+    --padding-start: 10px;
+  }
+  
+  /* Estilo dos erros de validação (dentro do campo) */
+  ion-item.error {
+    --border-color: #ff4d4d;
+    --color: #ff4d4d;
+  }
+  
+  /* Estilo para o botão de submit */
+  .submit-button {
+    --background: #343434;
+    --border-radius: 12px;
+    --color: white;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+    font-size: 18px;
+    margin-top: 50px;
+  }
+  
+  /* Estilo ao focar nos campos */
+  .custom-input:focus {
+    --box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    --border-color: #007bff;
+  }
+  
+  /* Estilo para esconder o input de arquivo */
+  input[type="file"] {
+    display: none;
+  }
+  
+  /* Estiliza o botão que simula o input de arquivo */
+  .custom-file-label {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 16px;
+    background-color: #3880ff;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #1814ff;
+    }
+  }
+  
+  /* Responsividade extra (opcional) */
+  @media (max-width: 600px) {
+    .custom-file-label {
+      width: 100%;
+    }
+  
+    .submit-button {
+      width: 100%;
+    }
+  }
+  .transparent-header {
+    --background: transparent;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  
+  ion-toolbar {
+    --background: transparent;
+    background: transparent !important;
+    --ion-background-color: transparent;
+    box-shadow: none !important;
+  }
+  
+  ion-header::after {
+    background: none !important; /* remove a linha/sombra que aparece abaixo do header */
+  }
+  

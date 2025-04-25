@@ -22,7 +22,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/salvos/salvos.module').then((m) => m.SalvosModule),
   },
-
   {
     path: 'recentes',
     loadChildren: () =>
@@ -30,16 +29,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: LoginPage,  // Rota inicial
+    redirectTo: '/login',
+    pathMatch: 'full',  // Rota inicial para login
   },
   {
     path: 'login',
     component: LoginPage,  // Rota para a página de login
-  },
-  {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full',
   },
 ];
 

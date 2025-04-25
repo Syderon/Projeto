@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { AuthService } from '../../services/auth.service'; // Certifique-se de que o caminho do seu serviço está correto
+import { Router } from '@angular/router'; // Importando Router para navegação
 
 @Component({
   selector: 'app-login',
@@ -8,42 +9,49 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  loginForm!: FormGroup;
-  passwordVisible: boolean = false;
 
-  constructor(private fb: FormBuilder, private navCtrl: NavController) { }
+  loginForm: FormGroup;
+  passwordVisible: boolean = false;  // Para controlar a visibilidade da senha
 
-  ngOnInit() {
-    // Inicializa o formulário com validações
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService, // Serviço de autenticação
+    private router: Router // Injeção do Router
+  ) {
+    // Inicialize o formulário de login
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required]],
     });
   }
 
-  // Alterna a visibilidade da senha
+  ngOnInit() {}
+
+  // Método para login
+  async onLogin() {
+    const { email, password } = this.loginForm.value;
+    try {
+      const user = await this.authService.login(email, password);
+      console.log('Usuário logado:', user);
+      // Redirecionar para a página principal após login
+      this.router.navigate(['/home']); // Troque '/home' pela página que deseja acessar após login
+    } catch (error) {
+      console.error('Erro ao fazer login', error);
+    }
+  }
+
+  // Método para alternar visibilidade da senha
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  // Método para realizar o login
-  onLogin() {
-    if (this.loginForm.valid) {
-      const email = this.loginForm.get('email')?.value;
-      const password = this.loginForm.get('password')?.value;
-      console.log('Email:', email, 'Senha:', password);
-      // Redireciona para a página inicial após o login
-      this.navCtrl.navigateForward('/home');
-    }
-  }
-
   // Método para redirecionar para a página de cadastro
   irParaCadastro() {
-    this.navCtrl.navigateForward('/cadastro'); // Altere para a página de cadastro
+    this.router.navigate(['/cadastro']); // Substitua '/cadastro' pelo caminho da página de cadastro
   }
 
   // Método para redirecionar para a página de recuperação de senha
   irParaRecuperarSenha() {
-    this.navCtrl.navigateForward('/recuperar-senha'); // Altere para a página de recuperação de senha
+    this.router.navigate(['/recuperar-senha']); // Substitua '/recuperar-senha' pelo caminho da página de recuperação de senha
   }
 }

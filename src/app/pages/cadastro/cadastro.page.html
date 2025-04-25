@@ -1,59 +1,58 @@
-<ion-header class="transparent-header">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="voltar()">
-        <ion-icon name="arrow-back-outline"></ion-icon>
+  <ion-header class="transparent-header">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="voltar()">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>Cadastro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding gradient-background">
+    <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+
+      <ion-item [class.error]="isCampoInvalido('nome')">
+        <ion-label position="floating">
+          {{ isCampoInvalido('nome') ? 'Nome obrigatório' : 'Nome' }}
+        </ion-label>
+        <ion-input formControlName="nome" [color]="isCampoInvalido('nome') ? 'danger' : 'primary'"></ion-input>
+      </ion-item>
+
+      <ion-item [class.error]="isCampoInvalido('email')">
+        <ion-label position="floating">
+          {{ isCampoInvalido('email') ? 'Email inválido' : 'Email' }}
+        </ion-label>
+        <ion-input type="email" formControlName="email" [color]="isCampoInvalido('email') ? 'danger' : 'primary'"></ion-input>
+      </ion-item>
+
+      <ion-item [class.error]="isCampoInvalido('senha')">
+        <ion-label position="floating">
+          {{ isCampoInvalido('senha') ? 'Senha obrigatória' : 'Senha' }}
+        </ion-label>
+        <ion-input type="password" formControlName="senha" [color]="isCampoInvalido('senha') ? 'danger' : 'primary'"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Celular</ion-label>
+        <ion-input type="tel" formControlName="celular"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" fill="outline" (click)="abrirSeletorDeImagem()">
+        Selecionar Avatar
       </ion-button>
-    </ion-buttons>
-    <ion-title>Cadastro</ion-title>
-  </ion-toolbar>
-</ion-header>
+      
+      <!-- Input escondido de imagem -->
+      <input
+        type="file"
+        #avatarInput
+        accept="image/*"
+        (change)="onFileSelected($event)"
+        hidden
+      />
 
-<ion-content class="ion-padding gradient-background">
-  <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
-
-    <ion-item [class.error]="isCampoInvalido('nome')">
-      <ion-label position="floating">
-        {{ isCampoInvalido('nome') ? 'Nome obrigatório' : 'Nome' }}
-      </ion-label>
-      <ion-input formControlName="nome" [color]="isCampoInvalido('nome') ? 'danger' : 'primary'"></ion-input>
-    </ion-item>
-
-    <ion-item [class.error]="isCampoInvalido('email')">
-      <ion-label position="floating">
-        {{ isCampoInvalido('email') ? 'Email inválido' : 'Email' }}
-      </ion-label>
-      <ion-input type="email" formControlName="email" [color]="isCampoInvalido('email') ? 'danger' : 'primary'"></ion-input>
-    </ion-item>
-
-    <ion-item [class.error]="isCampoInvalido('senha')">
-      <ion-label position="floating">
-        {{ isCampoInvalido('senha') ? 'Senha obrigatória' : 'Senha' }}
-      </ion-label>
-      <ion-input type="password" formControlName="senha" [color]="isCampoInvalido('senha') ? 'danger' : 'primary'"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Celular</ion-label>
-      <ion-input type="tel" formControlName="celular"></ion-input>
-    </ion-item>
-
-    <ion-button expand="block" fill="outline" (click)="abrirSeletorDeImagem()">
-      Selecionar Avatar
-    </ion-button>
-    
-    <!-- Input escondido de imagem -->
-    <input
-      type="file"
-      #avatarInput
-      accept="image/*"
-      (change)="onFileSelected($event)"
-      hidden
-    />
-    
-
-    <ion-button expand="block" type="submit" [disabled]="cadastroForm.invalid">
-      Cadastrar
-    </ion-button>
-  </form>
-</ion-content>
+      <ion-button expand="block" type="submit" [disabled]="cadastroForm.invalid">
+        Cadastrar
+      </ion-button>
+    </form>
+  </ion-content>

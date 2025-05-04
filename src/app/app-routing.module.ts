@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: 'generos',
     loadChildren: () =>
-      import('./pages/generos/generos.module').then((m) => m.GenerosModule),
+      import('./pages/generos/generos.module').then((m) => m.GenerosPageModule),
   },
   {
     path: 'salvos',
@@ -36,6 +36,37 @@ const routes: Routes = [
     path: 'login',
     component: LoginPage,  // Rota para a página de login
   },
+  // Rota para os gêneros
+  {
+    path: 'generos/fantasia',
+    loadChildren: () => import('./pages/generos/fantasia/fantasia.module').then(m => m.FantasiaPageModule)
+  },
+  {
+    path: 'generos/romance',
+    loadChildren: () => import('./pages/generos/romance/romance.module').then(m => m.RomancePageModule)
+  },  
+  {
+    path: 'generos/terror',
+    loadChildren: () => import('./pages/generos/terror/terror.module').then(m => m.TerrorPageModule)
+  },
+  {
+    path: 'generos/aventura',
+    loadChildren: () => import('./pages/generos/aventura/aventura.module').then(m => m.AventuraPageModule)
+  },
+  {
+    path: 'generos/suspense',
+    loadChildren: () => import('./pages/generos/suspense/suspense.module').then(m => m.SuspensePageModule)
+  },
+  {
+    path: 'generos/ficcao',
+    loadChildren: () => import('./pages/generos/ficcao/ficcao.module').then(m => m.FiccaoPageModule)
+  },
+  {
+    path: 'generos/acao',
+    loadChildren: () => import('./pages/generos/acao/acao.module').then(m => m.AcaoPageModule)
+  }
+  
+
 ];
 
 

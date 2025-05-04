@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GenerosComponent } from './generos.component';
+import { GenerosComponent } from './generos.page';
 
 describe('GenerosComponent', () => {
   let component: GenerosComponent;

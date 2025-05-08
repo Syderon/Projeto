@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';  // Certifique-se de importar o IonicModule
 
 import { GenerosRoutingModule } from './generos-routing.module';
-import { GenerosComponent } from './generos.component';
+import { GenerosPage } from './generos.page';
 
 @NgModule({
-  declarations: [GenerosComponent],
+  declarations: [GenerosPage],
   imports: [
     CommonModule,
     IonicModule,  // O IonicModule precisa estar aqui
@@ -15,4 +15,4 @@ import { GenerosComponent } from './generos.component';
   ]
   
 })
-export class GenerosModule { }
+export class GenerosPageModule { }

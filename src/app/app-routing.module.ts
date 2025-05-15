@@ -64,7 +64,12 @@ const routes: Routes = [
   {
     path: 'generos/acao',
     loadChildren: () => import('./pages/generos/acao/acao.module').then(m => m.AcaoPageModule)
-  }
+  },
+  {
+  path: 'recuperar-senha',
+  loadChildren: () => import('./pages/recuperar-senha/recuperar-senha.module').then(m => m.RecuperarSenhaPageModule)
+}
+
   
 
 ];

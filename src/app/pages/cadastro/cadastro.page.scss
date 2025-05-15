@@ -1,103 +1,232 @@
+/* Estilos base do ion-content */
+ion-content {
+  --background: radial-gradient(ellipse at top left, #1e1e1e, #2c2c2c, #3a3a3a);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-/* Personalizando o botão de voltar */
-.voltar-button {
-    --background: transparent;
-    --color: #007bff;
-    padding-left: 10px;
+/* Seção de cadastro - com z-index maior que o canvas */
+.register-section {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  animation: fadeInUp 0.8s ease;
+}
+
+/* Container do cadastro - estilo escuro com blur */
+.register-container {
+  background: transparent !important;
+  backdrop-filter: blur(16px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  color: #e0e0e0;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos do título animado */
+.app-title {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid rgba(224, 224, 224, 0.8);
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #5d00ff, #ffffffdb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 0;
+  animation:
+    typing 3s steps(20, end) forwards,
+    blink-caret 0.75s step-end infinite;
+}
+
+.app-subtitle {
+  font-size: 1rem;
+  color: var(--ion-color-secondary);
+  margin-top: 0.2rem;
+  opacity: 0;
+  transform: translateY(10px);
+  animation:
+    fadeInSubtitle 0.8s ease-out forwards 3s,
+    blinkHighlight 1.5s ease-in-out infinite 3.8s;
+  background: linear-gradient(90deg, #5b5b5b, #efeded);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heading p {
+  font-size: 0.9rem;
+  color: #cccccc;
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos do formulário */
+.register-form ion-item {
+  --background: rgba(255, 0, 0, 0);
+  --border-radius: 12px;
+  --padding-start: 12px;
+  margin-bottom: 1rem;
+  --color: #e0e0e0;
+  --highlight-color-focused: #5d00ff;
+  --box-shadow: none;
+}
+
+/* Input válido (color primary) - texto branco */
+ion-input[color="primary"]::part(native) {
+  color: #ffffff !important;
+  caret-color: #ffffff !important;
+}
+
+/* Input inválido (color danger) - texto vermelho */
+ion-input[color="danger"]::part(native) {
+  color: #ff4444 !important;  /* vermelho forte */
+  caret-color: #ff4444 !important;
+}
+
+
+
+ion-icon {
+  color: #5d00ff;
+  align-items: center;
+ }
+
+/* Botões */
+.avatar-btn {
+  --border-color: #5d00ff00;
+  --color: #5d00ff;
+  --background-activated: rgba(124, 77, 255, 0.1);
+  margin: 1rem 0;
+}
+
+.submit-btn {
+  --background: linear-gradient(to right, #5d00ff, #46ff40);
+  --border-radius: 12px;
+  --color: white;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-btn:active {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(124, 77, 255, 0.7);
+}
+
+/* Mensagens */
+.mensagem {
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  
+  &.sucesso {
+    background: rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
   }
   
-  .voltar-icon {
-    font-size: 24px;
+  &.erro {
+    background: rgba(244, 67, 54, 0.2);
+    color: #f44336;
+  }
+}
+
+/* Links adicionais */
+.additional-actions {
+  margin-top: 1rem;
+  
+  ion-button {
+    --color: #ffffffcc;
+    --color-activated: #fffeff;
+    font-size: 0.9rem;
+  }
+}
+
+/* Canvas background */
+.canvas-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Botão voltar */
+.botao-voltar {
+  position: fixed;
+  top: 20px;
+  left: 16px;
+  z-index: 100;
+  --color: #e0e0e0;
+  --color-activated: #ffffff;
+}
+
+/* Animações */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: rgba(224, 224, 224, 0.8); }
+}
+
+@keyframes fadeInSubtitle {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blinkHighlight {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Responsividade */
+@media only screen and (max-width: 768px) {
+  ion-content {
+    padding-top: 10%;
   }
   
-  /* Estilo geral dos campos do formulário */
-  .form-item {
-    margin-bottom: 20px;
+  .register-container {
+    padding: 1.2rem;
+    margin-top: 40px;
   }
   
-  /* Estiliza os campos de entrada com rótulo flutuante */
-  ion-item {
-    --highlight-color-focused: #007bff;
-    --border-color: #ccc;
-    border-radius: 8px;
+  .app-title {
+    font-size: 1.4rem;
   }
   
-  /* Estilo dos inputs */
-  ion-input {
-    padding: 10px;
-    --padding-start: 10px;
+  .botao-voltar {
+    top: 10px;
+    left: 10px;
   }
-  
-  /* Estilo dos erros de validação (dentro do campo) */
-  ion-item.error {
-    --border-color: #ff4d4d;
-    --color: #ff4d4d;
-  }
-  
-  /* Estilo para o botão de submit */
-  .submit-button {
-    --background: #343434;
-    --border-radius: 12px;
-    --color: white;
-    --padding-top: 16px;
-    --padding-bottom: 16px;
-    font-size: 18px;
-    margin-top: 50px;
-  }
-  
-  /* Estilo ao focar nos campos */
-  .custom-input:focus {
-    --box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-    --border-color: #007bff;
-  }
-  
-  /* Estilo para esconder o input de arquivo */
-  input[type="file"] {
-    display: none;
-  }
-  
-  /* Estiliza o botão que simula o input de arquivo */
-  .custom-file-label {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 16px;
-    background-color: #3880ff;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: #1814ff;
-    }
-  }
-  
-  /* Responsividade extra (opcional) */
-  @media (max-width: 600px) {
-    .custom-file-label {
-      width: 100%;
-    }
-  
-    .submit-button {
-      width: 100%;
-    }
-  }
-  .transparent-header {
-    --background: transparent;
-    background: transparent !important;
-    box-shadow: none !important;
-  }
-  
-  ion-toolbar {
-    --background: transparent;
-    background: transparent !important;
-    --ion-background-color: transparent;
-    box-shadow: none !important;
-  }
-  
-  ion-header::after {
-    background: none !important; /* remove a linha/sombra que aparece abaixo do header */
-  }
-  
+}
+
+ion-button[fill="clear"] {
+  font-size: 1rem;
+}
+

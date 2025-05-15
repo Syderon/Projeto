@@ -1,0 +1,43 @@
+<ion-content fullscreen>
+
+  <!-- Canvas animado no fundo (opcional, se for usar Paper.js aqui também) -->
+  <canvas id="canvas" class="canvas-back"></canvas>
+
+  <div class="recovery-section">
+    <div class="recovery-container">
+
+      <!-- Título -->
+      <div class="logo-container">
+        <h1 class="recovery-title">Redefinir Senha</h1>
+        <p class="recovery-subtitle">Informe seu email e enviaremos um link</p>
+      </div>
+
+      <!-- Formulário -->
+      <form [formGroup]="form" (ngSubmit)="enviarLink()" class="recovery-form">
+
+        <ion-item>
+          <ion-icon name="mail" slot="start"></ion-icon>
+          <ion-input type="email" formControlName="email" placeholder="Digite seu email">
+          </ion-input>
+        </ion-item>
+
+        <ion-text color="danger" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+          <p>Email inválido</p>
+        </ion-text>
+
+        <ion-button expand="block" type="submit" [disabled]="form.invalid" class="recovery-button">
+          Enviar Link de Recuperação
+        </ion-button>
+
+        <!-- Botão de voltar para login -->
+        <ion-button fill="clear" expand="block" (click)="voltarParaLogin()" class="ion-margin-top">
+          Voltar para o Login
+        </ion-button>
+
+
+      </form>
+
+    </div>
+  </div>
+
+</ion-content>

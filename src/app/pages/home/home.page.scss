@@ -1,18 +1,247 @@
-.home-container {
+:host {
+  --background-light: #fdfaf6;
+  --background-dark: #121212;
+  --text-color-light: #333;
+  --text-color-dark: #f0f0f0;
+  --highlight: #363636;
+  --card-bg-light: rgba(35, 35, 35, 0);
+  --card-bg-dark: #1e1e1e;
+}
+
+ion-content {
+  --background: transparent;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--text-color-light);
+  padding: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.title-center {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  color: var(--text-color-light);
+  transition: color 0.3s ease;
+}
+
+.busca-container {
+  width: 100%;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+
+  ::ng-deep ion-searchbar {
+    --background: rgba(255, 255, 255, 0.15);
+    --color: var(--text-color-light);
+    --placeholder-color: rgba(0, 0, 0, 0.4);
+    --icon-color: var(--text-color-light);
+    --clear-button-color: var(--text-color-light);
+    backdrop-filter: blur(12px);
+    padding: 4px 15px;
+    width: 100%;
+    max-width: 500px;
+    font-size: 14px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+  }
+
+  ::ng-deep ion-searchbar .searchbar-input-container {
+    border-radius: 50px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  ::ng-deep ion-searchbar:focus-within .searchbar-input-container {
+    border-color: var(--highlight);
+    box-shadow: 0 0 8px rgba(59, 59, 59, 0.4);
+  }
+}
+
+h2 {
+  font-size: 1.2rem;
+  color: var(--text-color-light);
+  margin: 15px 10px 8px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.livro-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100%;
+  padding: 5px;
+  background: var(--card-bg-light);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  max-width: 120px;
+  margin: 0 auto;
+  height: 250px;
+}
+
+.livro-card:hover {
+  transform: scale(1.02);
+}
+
+.livro-capa {
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.livro-titulo {
+  font-size: 14px;
   text-align: center;
+  color: var(--background-light);
+  font-weight: 500;
+  padding: 0 4px;
+  transition: color 0.3s ease;
 }
 
-.home-container h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+.line-separator {
+  height: 1px;
+  background-color: #dddddd;
+  margin: 20px 0;
+  transition: background-color 0.3s ease;
 }
 
-.home-container p {
-  font-size: 16px;
-  color: var(--ion-color-medium);
+.livro-actions {
+  display: none;
+}
+
+ion-slides {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    padding-right: 10px;
+    white-space: nowrap;
+    color: var(--text-color-dark);
+    transition: color 0.3s ease;
+  }
+
+  .divider-line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #dcdcdc;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+}
+
+.resultados-busca-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.background-art {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.3;
+    animation: float 12s ease-in-out infinite alternate;
+  }
+
+  &::before {
+    width: 300px;
+    height: 300px;
+    background: #c3d9ff;
+    top: -100px;
+    left: -100px;
+  }
+
+  &::after {
+    width: 400px;
+    height: 400px;
+    background: #ffe2e2;
+    bottom: -150px;
+    right: -100px;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  100% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+// Dark mode
+@media (prefers-color-scheme: dark) {
+  ion-content {
+    background-color: var(--background-dark);
+    color: var(--text-color-dark);
+  }
+
+  .title-center,
+  h2,
+  .livro-titulo {
+    color: var(--text-color-dark);
+  }
+
+  .livro-card {
+    background: var(--card-bg-dark);
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+  }
+
+  .line-separator {
+    background-color: #444;
+  }
+
+  .section-title h2 {
+    color: var(--text-color-dark);
+  }
+
+  .divider-line {
+    background-color: #555;
+  }
+
+  .busca-container ::ng-deep ion-searchbar {
+    --background: rgba(255, 255, 255, 0.08);
+    --color: var(--text-color-dark);
+    --placeholder-color: rgba(255, 255, 255, 0.5);
+    --icon-color: var(--text-color-dark);
+    --clear-button-color: var(--text-color-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .busca-container ::ng-deep ion-searchbar .searchbar-input-container {
+    border-radius: 50px !important;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  }
+
+  .busca-container ::ng-deep ion-searchbar:focus-within .searchbar-input-container {
+    border-color: var(--highlight);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  }
 }

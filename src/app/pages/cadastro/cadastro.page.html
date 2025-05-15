@@ -1,58 +1,100 @@
-  <ion-header class="transparent-header">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-button (click)="voltar()">
-          <ion-icon name="arrow-back-outline"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ion-title>Cadastro</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <ion-content class="ion-padding gradient-background">
-    <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+<ion-content fullscreen>
+  <!-- Canvas background (mesmo efeito do login) -->
+  <div class="canvas-background">
+    <canvas id="canvas"></canvas>
+  </div>
 
-      <ion-item [class.error]="isCampoInvalido('nome')">
-        <ion-label position="floating">
-          {{ isCampoInvalido('nome') ? 'Nome obrigatório' : 'Nome' }}
-        </ion-label>
-        <ion-input formControlName="nome" [color]="isCampoInvalido('nome') ? 'danger' : 'primary'"></ion-input>
-      </ion-item>
+  <!-- Container principal -->
+  <div class="form-wrapper">
+    
 
-      <ion-item [class.error]="isCampoInvalido('email')">
-        <ion-label position="floating">
-          {{ isCampoInvalido('email') ? 'Email inválido' : 'Email' }}
-        </ion-label>
-        <ion-input type="email" formControlName="email" [color]="isCampoInvalido('email') ? 'danger' : 'primary'"></ion-input>
-      </ion-item>
+    <div class="register-section">
+      <div class="register-container">
+        <!-- Cabeçalho com animação de digitação -->
+        <div class="logo-container">
+          <h1 class="app-title">Mundo da Leitura</h1>
+          <p class="app-subtitle">Join our reading community</p>
+        </div>
 
-      <ion-item [class.error]="isCampoInvalido('senha')">
-        <ion-label position="floating">
-          {{ isCampoInvalido('senha') ? 'Senha obrigatória' : 'Senha' }}
-        </ion-label>
-        <ion-input type="password" formControlName="senha" [color]="isCampoInvalido('senha') ? 'danger' : 'primary'"></ion-input>
-      </ion-item>
+        <div class="heading">
+          <p>Criar Conta</p>
+        </div>
 
-      <ion-item>
-        <ion-label position="floating">Celular</ion-label>
-        <ion-input type="tel" formControlName="celular"></ion-input>
-      </ion-item>
+        <!-- Mensagens -->
+        <div *ngIf="showSuccessMessage" class="mensagem sucesso">
+          {{ successMessage }}
+        </div>
+        <div *ngIf="showErrorMessage" class="mensagem erro">
+          {{ errorMessage }}
+        </div>
 
-      <ion-button expand="block" fill="outline" (click)="abrirSeletorDeImagem()">
-        Selecionar Avatar
-      </ion-button>
-      
-      <!-- Input escondido de imagem -->
-      <input
-        type="file"
-        #avatarInput
-        accept="image/*"
-        (change)="onFileSelected($event)"
-        hidden
-      />
+        <!-- Formulário -->
+        <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" class="register-form">
+          <!-- Campos do formulário com animação -->
+          <div class="form-input" [class.animate-item]="animationDone" style="animation-delay: 0.1s">
+            <ion-item [class.error]="isCampoInvalido('nome')">
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-label position="floating">
+                {{ isCampoInvalido('nome') ? 'Nome obrigatório' : 'Nome' }}
+              </ion-label>
+              <ion-input formControlName="nome" [color]="isCampoInvalido('nome') ? 'danger' : 'primary'"></ion-input>
+            </ion-item>
+          </div>
 
-      <ion-button expand="block" type="submit" [disabled]="cadastroForm.invalid">
-        Cadastrar
-      </ion-button>
-    </form>
-  </ion-content>
+          <div class="form-input" [class.animate-item]="animationDone" style="animation-delay: 0.2s">
+            <ion-item [class.error]="isCampoInvalido('email')">
+              <ion-icon slot="start" name="mail"></ion-icon>
+              <ion-label position="floating">
+                {{ isCampoInvalido('email') ? 'Email inválido' : 'Email' }}
+              </ion-label>
+              <ion-input type="email" formControlName="email"
+                [color]="isCampoInvalido('email') ? 'danger' : 'primary'"></ion-input>
+            </ion-item>
+          </div>
+
+          <div class="form-input" [class.animate-item]="animationDone" style="animation-delay: 0.3s">
+            <ion-item [class.error]="isCampoInvalido('senha')">
+              <ion-icon slot="start" name="lock-closed"></ion-icon>
+              <ion-label position="floating">
+                {{ isCampoInvalido('senha') ? 'Senha obrigatória' : 'Senha' }}
+              </ion-label>
+              <ion-input [type]="passwordVisible ? 'text' : 'password'" formControlName="senha"
+                [color]="isCampoInvalido('senha') ? 'danger' : 'primary'"></ion-input>
+              <ion-button fill="clear" slot="end" type="button" (click)="togglePasswordVisibility()">
+                <ion-icon [name]="passwordVisible ? 'eye-off' : 'eye'"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </div>
+
+          <div class="form-input" [class.animate-item]="animationDone" style="animation-delay: 0.4s">
+            <ion-item>
+              <ion-icon slot="start" name="call"></ion-icon>
+              <ion-label position="floating">Celular</ion-label>
+              <ion-input type="tel" formControlName="celular"></ion-input>
+            </ion-item>
+          </div>
+
+          <ion-button expand="block" fill="outline" (click)="abrirSeletorDeImagem()" class="avatar-btn" 
+            [class.animate-item]="animationDone" style="animation-delay: 0.5s">
+            <ion-icon name="image" slot="start"></ion-icon>
+            Selecionar Avatar
+          </ion-button>
+
+          <input type="file" #avatarInput accept="image/*" (change)="onFileSelected($event)" hidden />
+
+          <ion-button expand="block" type="submit" [disabled]="cadastroForm.invalid" class="submit-btn"
+            [class.animate-item]="animationDone" style="animation-delay: 0.6s">
+            Cadastrar
+          </ion-button>
+
+          <div class="additional-actions">
+            <ion-button fill="clear" (click)="voltar()" class="btn-pequeno">
+              Já tem uma conta? Entrar
+            </ion-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>

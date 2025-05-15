@@ -1,9 +1,20 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar class="transparent-toolbar">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button> <!-- Ícone do menu -->
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title class="title-center">Início</ion-title>
+
+    <!-- Campo de busca moderno com bordas arredondadas -->
+    <div class="busca-container">
+      <ion-searchbar 
+        [(ngModel)]="termoBusca" 
+        (ionInput)="buscarLivro($event)" 
+        debounce="300" 
+        placeholder="Buscar livros..."
+        showCancelButton="focus"
+        animated>
+      </ion-searchbar>
+    </div>
 
     <ion-buttons slot="end">
       <ion-button (click)="logout()">
@@ -13,11 +24,62 @@
   </ion-toolbar>
 </ion-header>
 
-
-
 <ion-content [fullscreen]="true" class="ion-padding">
-  <div class="home-container">
-    <h2>Bem-vindo ao Mundo da Leitura</h2>
-    <p>Escolha um gênero no menu para começar sua leitura.</p>
+  <div class="background-art"></div>
+
+  <!-- Resultados da busca -->
+  <div *ngIf="resultadosBusca.length > 0" class="search-results">
+    <ion-list>
+      <ion-item *ngFor="let livro of resultadosBusca" (click)="lerLivro(livro)">
+        <ion-thumbnail slot="start">
+          <img [src]="livro.capa">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ livro.titulo }}</h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
   </div>
+
+  <!-- Destaques -->
+  <div class="section-title">
+    <h2>Destaques</h2>
+    <div class="divider-line"></div>
+  </div>
+  <ion-slides [options]="slideOpts">
+    <ion-slide *ngFor="let livro of livrosDestaques">
+      <div class="livro-card" (click)="lerLivro(livro)" (press)="salvarLivro(livro)">
+        <img [src]="livro.capa" alt="{{ livro.titulo }}" class="livro-capa">
+        <p class="livro-titulo">{{ livro.titulo }}</p>
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- Mais Lidos -->
+  <div class="section-title">
+    <h2>Mais Lidos</h2>
+    <div class="divider-line"></div>
+  </div>
+  <ion-slides [options]="slideOpts">
+    <ion-slide *ngFor="let livro of livrosMaisLidos">
+      <div class="livro-card" (click)="lerLivro(livro)" (press)="salvarLivro(livro)">
+        <img [src]="livro.capa" alt="{{ livro.titulo }}" class="livro-capa">
+        <p class="livro-titulo">{{ livro.titulo }}</p>
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- Adicionados Recentemente -->
+  <div class="section-title">
+    <h2>Adicionados Recentemente</h2>
+    <div class="divider-line"></div>
+  </div>
+  <ion-slides [options]="slideOpts">
+    <ion-slide *ngFor="let livro of livrosRecentes">
+      <div class="livro-card" (click)="lerLivro(livro)">
+        <img [src]="livro.capa" alt="{{ livro.titulo }}" class="livro-capa">
+        <p class="livro-titulo">{{ livro.titulo }}</p>
+      </div>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

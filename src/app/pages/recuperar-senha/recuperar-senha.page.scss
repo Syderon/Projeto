@@ -1,5 +1,3 @@
-
-/* Estilos base do ion-content */
 ion-content {
   --background: radial-gradient(ellipse at top left, #1e1e1e, #2c2c2c, #3a3a3a);
   position: relative;
@@ -9,20 +7,18 @@ ion-content {
   justify-content: center;
 }
 
-/* Seção de login - agora com z-index maior que o canvas */
-.login-section {
+.recovery-section {
   position: relative;
-  z-index: 100; /* Aumentado para garantir sobreposição */
+  z-index: 100;
   width: 100%;
   padding: 2rem 1rem;
   display: flex;
   justify-content: center;
   animation: fadeInUp 0.8s ease;
- }
+}
 
-/* Container do login - ajustado para melhor contraste */
-.login-container {
-  background: transparent !important; /* Fundo mais escuro para melhor contraste */
+.recovery-container {
+  background: transparent !important;
   backdrop-filter: blur(16px);
   border-radius: 1rem;
   padding: 1rem;
@@ -32,11 +28,9 @@ ion-content {
   color: #e0e0e000;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0);
-  
 }
 
-
-.app-title {
+.recovery-title {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
@@ -52,7 +46,7 @@ ion-content {
     blink-caret 0.75s step-end infinite;
 }
 
-.app-subtitle {
+.recovery-subtitle {
   font-size: 0.8rem;
   color: var(--ion-color-secondary);
   margin-top: 0.2rem;
@@ -66,13 +60,7 @@ ion-content {
   -webkit-text-fill-color: transparent;
 }
 
-.heading p {
-  font-size: 0.8rem;
-  color: #757575cb;
-  margin-bottom: 1rem;
-}
-
-.login-form ion-item {
+.recovery-form ion-item {
   --background: rgba(0, 0, 0, 0);
   --border-radius: 14px;
   --padding-start: 12px;
@@ -92,10 +80,9 @@ ion-icon {
   background-color: #ffffff00;
   border-radius: 15px;
   position: relative;
-  
 }
 
-.login-button {
+.recovery-button {
   --background: linear-gradient(to right, #04ff00, #5d00ff);
   border-radius: 16px;
   font-weight: bold;
@@ -105,33 +92,20 @@ ion-icon {
   color: white;
 }
 
-.login-button:active {
+.recovery-button:active {
   transform: scale(1.05);
   box-shadow: 0 0 10px #5d00ff;
-}
-
-.additional-actions ion-button {
-  font-size: 0.9rem;
-  color: #ffffffcc;
-  --color-activated: #ff4081;
 }
 
 ion-text p {
   font-size: 0.75rem;
   color: #ff4081;
   margin-left: 0.5rem;
-}
-
-.erro-mensagem {
-  margin-top: 8px;
   text-align: center;
   font-weight: bold;
-  font-size: 0.9rem;
-  color: #f03d3d;
 }
 
- 
-
+/* Animações */
 @keyframes typing {
   from { width: 0; }
   to { width: 100%; }
@@ -160,29 +134,33 @@ ion-text p {
   }
 }
 
-
+/* Responsivo */
 @media only screen and (max-width: 768px) {
   ion-content {
-    padding-top: 10%; /* Ajuste para mobile */
+    padding-top: 10%;
   }
-  
-  .login-container {
+
+  .recovery-container {
     padding: 1rem;
     border-radius: 1rem;
   }
-  
-  .logo-container {
-    margin-bottom: 6rem;
-  }
-  
-  .app-title {
+
+  .recovery-title {
     font-size: 1.4rem;
   }
-  
-  .canvas-container canvas {
-    transform: scale(0.1); /* Reduz ainda mais para mobile */
-  }
 }
-.canvas-background {
-  height: 100px; /* Altura fixa */
+.canvas-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
+ion-button[fill="clear"] {
+  font-size: 0.5rem;
+  color: #ffffffcc;
+  --color-activated: #5d00ff;
+}
+

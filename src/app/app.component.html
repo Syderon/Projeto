@@ -1,5 +1,6 @@
 <ion-app>
-  <ion-menu contentId="main-content">
+  <!-- Menu Lateral -->
+  <ion-menu contentId="main-content" swipeGesture="false">
     <ion-header>
       <ion-toolbar>
         <ion-title>Menu</ion-title>
@@ -8,17 +9,19 @@
 
     <ion-content>
       <ion-list>
-        <div class="perfil-container">
+        <!-- Seção do Perfil -->
+        <div class="perfil-container" *ngIf="user$ | async as user">
           <ion-avatar>
-            <img src="assets/avatar.jpg" />
+            <img [src]="user?.photoURL || 'assets/avatar.jpg'" />
           </ion-avatar>
           <div class="perfil-info">
-            <h2>Nome do Usuário</h2>
-            <p>email@exemplo.com</p>
+            <h2>{{ user?.displayName || 'Nome do Usuário' }}</h2>
+            <p>{{ user?.email || 'email@exemplo.com' }}</p> <!-- Exibe email se disponível -->
           </div>
         </div>
 
         <ion-menu-toggle auto-hide="false">
+          <!-- Itens do Menu -->
           <ion-item routerLink="/home" routerDirection="root">
             <ion-icon name="home-outline" slot="start"></ion-icon>
             <ion-label>Início</ion-label>
@@ -39,14 +42,16 @@
             <ion-label>Recentes</ion-label>
           </ion-item>
         </ion-menu-toggle>
-        
+
         <ion-item lines="full"></ion-item>
 
+        <!-- Modo Escuro -->
         <ion-item lines="none" button (click)="toggleDarkMode()">
           <ion-icon name="moon-outline" slot="start" [ngClass]="{'icone-dark-ativo': isDarkMode}"></ion-icon>
           <ion-label>Modo Escuro</ion-label>
         </ion-item>
 
+        <!-- Informações de Copyright -->
         <ion-item lines="none">
           <ion-label class="copyright">
             <p>© 2025 Mundo da Leitura</p>
@@ -54,11 +59,11 @@
             <p>Prof. Responsável: Davi Barros</p>
           </ion-label>
         </ion-item>
-
       </ion-list>
     </ion-content>
   </ion-menu>
 
+  <!-- Conteúdo Principal -->
   <div id="main-content" class="ion-page">
     <ion-router-outlet></ion-router-outlet>
   </div>

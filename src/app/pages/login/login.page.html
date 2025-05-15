@@ -1,72 +1,65 @@
-<ion-content class="ion-padding">
-  <div class="login-section animate-smoke">
-
-    <div class="login-container">
-      
-      <!-- Logo -->
-      <div class="logo-container">
-        <img src="/assets/Mundo da Leitura (1).png" alt="Logo Mundo da Leitura" />
-      </div>
-
-      <!-- Título e subtítulo -->
-      <div class="heading">
-        <h1>Bem-vindo</h1>
-        <p>Entre com seu email e senha</p>
-      </div>
-
-      <!-- Formulário -->
-      <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
-
-        <!-- Campo de Email -->
-        <div class="form-input">
-          <ion-item>
-            <ion-icon slot="start" name="mail"></ion-icon>
-            <ion-input 
-              placeholder="email@domain.com" 
-              type="email" 
-              formControlName="email">
-            </ion-input>
-          </ion-item>
-          <ion-text color="danger" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-            <p>Email inválido.</p>
-          </ion-text>
-        </div>
-
-        <!-- Campo de Senha -->
-        <div class="form-input">
-          <ion-item lines="inset">
-            <ion-icon name="lock-closed" slot="start"></ion-icon>
-            <ion-input
-              [type]="passwordVisible ? 'text' : 'password'"
-              placeholder="Digite sua senha"
-              formControlName="password">
-            </ion-input>
-            <ion-button fill="clear" slot="end" (click)="togglePasswordVisibility()" type="button">
-              <ion-icon [name]="passwordVisible ? 'eye-off' : 'eye'"></ion-icon>
-            </ion-button>
-          </ion-item>
-          <ion-text color="danger" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-            <p>Senha deve ter ao menos 6 caracteres.</p>
-          </ion-text>
-        </div>
-
-        <!-- Botão de Login -->
-        <ion-button expand="block" type="submit" [disabled]="loginForm.invalid" class="login-button">
-          Entrar
-        </ion-button>
-
-        <!-- Botões de Ações adicionais -->
-        <div class="additional-actions">
-          <!-- Botão de Cadastro -->
-          <ion-button fill="clear" expand="block" (click)="irParaCadastro()">Cadastre-se</ion-button>
-
-          <!-- Botão de Recuperação de Senha -->
-          <ion-button fill="clear" expand="block" (click)="irParaRecuperarSenha()">Esqueci a Senha</ion-button>
-        </div>
-
-      </form>
-      
-    </div>
+<ion-content fullscreen>
+  <!-- Container do canvas (deve vir primeiro) -->
+  <div class="canvas-background">
+    <canvas id="canvas"></canvas>
+    
   </div>
 
+  <!-- Container do formulário -->
+  <div class="form-wrapper">
+    <div class="login-section">
+      <div class="login-container">
+        <div class="logo-container">
+          <h1 class="app-title">Mundo da Leitura</h1>
+          <p class="app-subtitle">I read therefore I exist</p>
+        </div>
+
+        <div class="heading">
+          <p>Entre com seu email e senha</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+          <div class="form-input">
+            <ion-item>
+              <ion-icon slot="start" name="mail"></ion-icon>
+              <ion-input placeholder="email@domain.com" type="email" formControlName="email"></ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+              <p>Email inválido.</p>
+            </ion-text>
+          </div>
+
+          <div class="form-input">
+            <ion-item lines="inset">
+              <ion-icon name="lock-closed" slot="start"></ion-icon>
+              <ion-input [type]="passwordVisible ? 'text' : 'password'" placeholder="Digite sua senha" formControlName="password"></ion-input>
+              <ion-button fill="clear" slot="end" type="button" (click)="togglePasswordVisibility()">
+                <ion-icon [name]="passwordVisible ? 'eye-off' : 'eye'"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-text color="danger" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+              <p>Senha deve ter ao menos 6 caracteres.</p>
+            </ion-text>
+          </div>
+
+          <ion-button expand="block" type="submit" [disabled]="loginForm.invalid" class="login-button">
+            Entrar
+          </ion-button>
+
+          <ion-text color="danger" *ngIf="loginError && loginForm.valid">
+            <p class="erro-mensagem">E-mail ou senha incorretos.</p>
+          </ion-text>
+
+          <div class="additional-actions">
+            <ion-button fill="clear" expand="block" (click)="irParaCadastro()">
+              Cadastre-se
+            </ion-button>
+            <ion-button fill="clear" expand="block" (click)="irParaRecuperarSenha()">
+              Esqueci a Senha
+            </ion-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </ion-content>

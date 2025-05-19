@@ -1,20 +1,17 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class="transparent-toolbar">
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
-    <!-- Campo de busca moderno com bordas arredondadas -->
-    <div class="busca-container">
-      <ion-searchbar 
-        [(ngModel)]="termoBusca" 
-        (ionInput)="buscarLivro($event)" 
-        debounce="300" 
-        placeholder="Buscar livros..."
-        showCancelButton="focus"
-        animated>
-      </ion-searchbar>
-    </div>
+    <ion-searchbar
+      [(ngModel)]="termoBusca"
+      (ionInput)="buscarLivro($event)"
+      debounce="300"
+      placeholder="Buscar livros..."
+      class="search-minimal"
+      animated>
+    </ion-searchbar>
 
     <ion-buttons slot="end">
       <ion-button (click)="logout()">
@@ -24,62 +21,66 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <div class="background-art"></div>
+<ion-content [fullscreen]="true" [class.dark]="isDarkMode">
+  <div class="content-wrapper">
+    <div *ngIf="resultadosBusca.length > 0" class="search-results">
+      <ion-virtual-scroll [items]="resultadosBusca" approxItemHeight="70px">
+        <ion-item *virtualItem="let livro; let i = index; trackBy: trackByLivro" (click)="lerLivro(livro)" lines="none">
+          <ion-thumbnail slot="start">
+            <img [src]="livro.capa" class="result-thumbnail" [alt]="livro.titulo">
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{ livro.titulo }}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-virtual-scroll>
+    </div>
 
-  <!-- Resultados da busca -->
-  <div *ngIf="resultadosBusca.length > 0" class="search-results">
-    <ion-list>
-      <ion-item *ngFor="let livro of resultadosBusca" (click)="lerLivro(livro)">
-        <ion-thumbnail slot="start">
-          <img [src]="livro.capa">
-        </ion-thumbnail>
-        <ion-label>
-          <h2>{{ livro.titulo }}</h2>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </div>
+    <div *ngIf="resultadosBusca.length === 0 && termoBusca" class="empty-search">
+      <ion-icon name="search-off-outline" size="large"></ion-icon>
+      <p>Nenhum livro encontrado para "{{ termoBusca }}".</p>
+      <p>Tente realizar uma nova busca.</p>
+    </div>
 
-  <!-- Destaques -->
-  <div class="section-title">
-    <h2>Destaques</h2>
-    <div class="divider-line"></div>
-  </div>
-  <ion-slides [options]="slideOpts">
-    <ion-slide *ngFor="let livro of livrosDestaques">
-      <div class="livro-card" (click)="lerLivro(livro)" (press)="salvarLivro(livro)">
-        <img [src]="livro.capa" alt="{{ livro.titulo }}" class="livro-capa">
-        <p class="livro-titulo">{{ livro.titulo }}</p>
+    <div class="section-container" *ngIf="resultadosBusca.length === 0 && !termoBusca">
+      <div class="section-title">
+        <h2>Destaques</h2>
+        <div class="divider-line"></div>
       </div>
-    </ion-slide>
-  </ion-slides>
+      <ion-slides [options]="slideOpts">
+        <ion-slide *ngFor="let livro of livrosDestaques; let i = index; trackBy: trackByLivro">
+          <div class="livro-card" (click)="lerLivro(livro)">
+            <img [src]="livro.capa" class="livro-capa" [alt]="livro.titulo">
+            <p class="livro-titulo">{{ livro.titulo }}</p>
+          </div>
+        </ion-slide>
+      </ion-slides>
 
-  <!-- Mais Lidos -->
-  <div class="section-title">
-    <h2>Mais Lidos</h2>
-    <div class="divider-line"></div>
-  </div>
-  <ion-slides [options]="slideOpts">
-    <ion-slide *ngFor="let livro of livrosMaisLidos">
-      <div class="livro-card" (click)="lerLivro(livro)" (press)="salvarLivro(livro)">
-        <img [src]="livro.capa" alt="{{ livro.titulo }}" class="livro-capa">
-        <p class="livro-titulo">{{ livro.titulo }}</p>
+      <div class="section-title">
+        <h2>Mais Lidos</h2>
+        <div class="divider-line"></div>
       </div>
-    </ion-slide>
-  </ion-slides>
+      <ion-slides [options]="slideOpts">
+        <ion-slide *ngFor="let livro of livrosMaisLidos; let i = index; trackBy: trackByLivro">
+          <div class="livro-card" (click)="lerLivro(livro)">
+            <img [src]="livro.capa" class="livro-capa" [alt]="livro.titulo">
+            <p class="livro-titulo">{{ livro.titulo }}</p>
+          </div>
+        </ion-slide>
+      </ion-slides>
 
-  <!-- Adicionados Recentemente -->
-  <div class="section-title">
-    <h2>Adicionados Recentemente</h2>
-    <div class="divider-line"></div>
-  </div>
-  <ion-slides [options]="slideOpts">
-    <ion-slide *ngFor="let livro of livrosRecentes">
-      <div class="livro-card" (click)="lerLivro(livro)">
-        <img [src]="livro.capa" alt="{{ livro.titulo }}" class="livro-capa">
-        <p class="livro-titulo">{{ livro.titulo }}</p>
+      <div class="section-title">
+        <h2>Adicionados Recentemente</h2>
+        <div class="divider-line"></div>
       </div>
-    </ion-slide>
-  </ion-slides>
+      <ion-slides [options]="slideOpts">
+        <ion-slide *ngFor="let livro of livrosRecentes; let i = index; trackBy: trackByLivro">
+          <div class="livro-card" (click)="lerLivro(livro)">
+            <img [src]="livro.capa" class="livro-capa" [alt]="livro.titulo">
+            <p class="livro-titulo">{{ livro.titulo }}</p>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
 </ion-content>

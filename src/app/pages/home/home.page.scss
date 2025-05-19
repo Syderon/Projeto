@@ -1,247 +1,384 @@
+/* VARIÁVEIS DE TEMA (Versão 4 - Design Aprimorado com Cards de Livros Reais, Busca Instagram, Ajustes Visuais, Efeitos e Foco na Busca - FORÇADO) */
 :host {
-  --background-light: #fdfaf6;
-  --background-dark: #121212;
-  --text-color-light: #333;
-  --text-color-dark: #f0f0f0;
-  --highlight: #363636;
-  --card-bg-light: rgba(35, 35, 35, 0);
-  --card-bg-dark: #1e1e1e;
+  /* Cores do Modo Claro */
+  --page-background-light: #f9f9f9;
+  --toolbar-background-light: #ffffff;
+  --text-color-primary-light: #222222;
+  --text-color-secondary-light: #666666;
+  --card-background-light: transparent;
+  --border-color-light: rgba(0, 0, 0, 0.1);
+  --highlight-light: #6200ee;
+  --highlight-hover-light: #5600d4;
+
+  /* Cores do Modo Escuro */
+  --page-background-dark: linear-gradient(to bottom, #333333, #555555); /* Gradiente de preto claro para cinza claro */
+  --toolbar-background-dark: linear-gradient(to bottom, #333333, #555555); /* Gradiente de preto claro para cinza claro */
+  --text-color-primary-dark: #eeeeee;
+  --text-color-secondary-dark: #bbbbbb;
+  --card-background-dark: #444444; /* Um tom de cinza ainda mais claro para os cards no modo dark */
+  --border-color-dark: rgba(255, 255, 255, 0.1);
+  --highlight-dark: #bb86fc;
+  --highlight-hover-dark: #9c6ade;
+
+  /* Variáveis Globais (Padrão para o Modo Claro) */
+  --page-background: var(--page-background-light);
+  --toolbar-background: var(--toolbar-background-light);
+  --text-color-primary: var(--text-color-primary-light);
+  --text-color-secondary: var(--text-color-secondary-light);
+  --card-background: var(--card-background-light);
+  --border-color: var(--border-color-light);
+  --highlight: var(--highlight-light);
 }
 
+.dark {
+  :host {
+    --page-background: var(--page-background-dark) !important;
+    --toolbar-background: var(--toolbar-background-dark) !important;
+    --text-color-primary: var(--text-color-primary-dark) !important;
+    --text-color-secondary: var(--text-color-secondary-dark) !important;
+    --card-background: var(--card-background-dark) !important;
+    --border-color: var(--border-color-dark) !important;
+    --highlight: var(--highlight-dark) !important;
+  }
+
+  ion-content {
+    --background: var(--page-background) !important;
+    --color: var(--text-color-primary) !important;
+  }
+
+  ion-toolbar {
+    --background: var(--toolbar-background) !important;
+    --color: var(--text-color-primary) !important;
+    --border-bottom: 1px solid var(--border-color-dark); /* Adiciona uma borda sutil na parte inferior */
+  }
+
+  ion-searchbar {
+    --background: var(--card-background) !important;
+    --color: var(--text-color-primary) !important;
+    --placeholder-color: var(--text-color-secondary) !important;
+    --icon-color: var(--text-color-secondary) !important;
+    --clear-button-color: var(--text-color-secondary) !important;
+    --search-icon-color: var(--text-color-secondary) !important;
+    border-radius: 8px; /* Arredonda as bordas da searchbar */
+  }
+
+  .search-results ion-item {
+    --background: var(--card-background) !important;
+    --color: var(--text-color-primary) !important;
+    border-bottom: 1px solid var(--border-color-dark); /* Adiciona um separador sutil entre os resultados */
+  }
+
+  .empty-search {
+    color: var(--text-color-secondary) !important;
+  }
+
+  .section-title h2 {
+    color: var(--text-color-primary) !important;
+    font-size: 1.2rem; /* Aumenta um pouco a fonte do título da seção */
+    font-weight: 600;
+    padding-left: 16px; /* Adiciona um pequeno espaçamento à esquerda */
+  }
+
+  .divider-line {
+    background: linear-gradient(90deg, var(--highlight) 0%, transparent 100%) !important;
+    opacity: 0.4 !important; /* Reduz um pouco a opacidade da linha */
+    height: 2px; /* Aumenta um pouco a altura da linha */
+    margin: 8px 16px; /* Adiciona margem superior e inferior e nas laterais */
+  }
+
+  .livro-card {
+    background: var(--card-background) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra mais pronunciada */
+    border-radius: 8px; /* Arredonda as bordas dos cards de livros */
+    transition: transform 0.15s ease-in-out; /* Adiciona uma transição suave para o hover */
+  }
+
+  .livro-card:hover {
+    transform: scale(1.05); /* Pequena ampliação no hover */
+  }
+
+  .livro-titulo {
+    color: var(--text-color-primary) !important;
+    font-size: 0.9rem; /* Aumenta um pouco a fonte do título do livro */
+    margin-top: 8px;
+  }
+}
+
+/* Estilos Globais */
 ion-content {
-  --background: transparent;
-  position: relative;
+  --color: var(--text-color-primary);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+ion-toolbar {
+  --min-height: 56px !important;
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --border-width: 0;
+  --ion-toolbar-border-color: transparent;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Adiciona uma sombra sutil */
+
+  .dark & {
+    box-shadow: 0 1px 2px rgba(255, 255, 255, 0.05); /* Sombra sutil no modo dark também */
+  }
+}
+
+ion-buttons[slot="start"],
+ion-buttons[slot="end"] {
+  padding: 0;
+}
+
+ion-menu-button,
+ion-back-button,
+ion-button {
+  --color: var(--text-color-secondary);
+  --padding-start: 8px; /* Aumenta um pouco o padding interno */
+  --padding-end: 8px;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  --inner-padding-start: 8px;
+  --inner-padding-end: 8px;
+  transition: color 0.2s ease-in-out;
+  font-size: 1rem;
+  border-radius: 6px; /* Arredonda os botões */
+
+  &:hover {
+    --color: var(--highlight);
+    background-color: rgba(var(--ion-color-primary-rgb), 0.08); /* Feedback visual no hover */
+  }
+}
+
+.dark ion-menu-button,
+.dark ion-back-button,
+.dark ion-button {
+  --color: var(--text-color-primary);
+
+  &:hover {
+    background-color: rgba(var(--ion-color-primary-rgb), 0.15); /* Feedback visual no hover no modo dark */
+  }
+}
+
+/* Searchbar Estilo Instagram com Efeito de Foco - FORÇADO */
+ion-searchbar {
+  --background: var(--card-background) !important; /* Forçando o background */
+  --color: var(--text-color-primary) !important; /* Forçando a cor do texto */
+  --placeholder-color: var(--text-color-secondary) !important; /* Forçando a cor do placeholder */
+  --icon-color: var(--text-color-secondary) !important; /* Forçando a cor dos ícones */
+  --clear-button-color: transparent !important; /* Forçando a cor do botão de limpar */
+  --search-icon-color: var(--text-color-secondary) !important; /* Forçando a cor do ícone de busca */
+  border-radius: 10px;
+  margin: 8px 16px; /* Aumenta a margem horizontal */
+  padding: 0;
+  height: 36px; /* Aumenta um pouco a altura */
   overflow: hidden;
-  background-size: cover;
-  background-attachment: fixed;
-  color: var(--text-color-light);
-  padding: 10px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out !important; /* Forçando a transição */
+  border: 1px solid transparent !important; /* Forçando a borda transparente */
 }
 
-.title-center {
-  width: 100%;
+ion-searchbar:focus {
+  box-shadow: 0 0 8px var(--highlight) !important; /* Forçando a sombra */
+  outline: none !important; /* Forçando a remoção da outline */
+  border-color: var(--highlight) !important; /* Forçando a cor da borda */
+}
+
+ion-searchbar::part(input) {
+  padding-left: 12px; /* Aumenta o padding interno */
+  padding-right: 12px;
+  font-size: 0.95rem;
+  height: 36px;
+  line-height: 36px;
+}
+
+ion-searchbar::part(search-icon) {
+  padding-left: 12px;
+  color: var(--text-color-secondary);
+}
+
+ion-searchbar::part(cancel-button) {
+  margin-right: 12px;
+  color: var(--text-color-secondary);
+}
+
+/* Resultados da Busca */
+.search-results {
+  ion-list {
+    background: transparent;
+    padding: 0 16px; /* Aumenta o padding horizontal */
+  }
+  /* ... seus estilos anteriores ... */
+}
+
+.empty-search {
+  padding: 32px;
   text-align: center;
-  font-weight: bold;
-  color: var(--text-color-light);
-  transition: color 0.3s ease;
+  color: var(--text-color-secondary);
+
+  ion-icon {
+    margin-bottom: 16px;
+    font-size: 2rem; /* Aumenta o tamanho do ícone */
+  }
+
+  p {
+    margin-top: 8px;
+    font-size: 0.9rem;
+  }
 }
 
-.busca-container {
-  width: 100%;
-  margin: 20px 0;
+/* Seções */
+.section-container {
+  margin-top: 16px; /* Aumenta a margem superior */
+  padding: 0 16px; /* Aumenta o padding horizontal */
+}
+
+.section-title {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px; /* Aumenta a margem inferior */
 
-  ::ng-deep ion-searchbar {
-    --background: rgba(255, 255, 255, 0.15);
-    --color: var(--text-color-light);
-    --placeholder-color: rgba(0, 0, 0, 0.4);
-    --icon-color: var(--text-color-light);
-    --clear-button-color: var(--text-color-light);
-    backdrop-filter: blur(12px);
-    padding: 4px 15px;
-    width: 100%;
-    max-width: 500px;
-    font-size: 14px;
-    border-radius: 50px;
-    transition: all 0.3s ease;
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    padding-right: 12px;
+    color: var(--text-color-primary);
   }
 
-  ::ng-deep ion-searchbar .searchbar-input-container {
-    border-radius: 50px !important;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-    transition: border 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  ::ng-deep ion-searchbar:focus-within .searchbar-input-container {
-    border-color: var(--highlight);
-    box-shadow: 0 0 8px rgba(59, 59, 59, 0.4);
+  .divider-line {
+    flex-grow: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--highlight) 0%, transparent 100%) !important;
+    opacity: 0.4;
   }
 }
 
-h2 {
-  font-size: 1.2rem;
-  color: var(--text-color-light);
-  margin: 15px 10px 8px;
-  font-weight: 600;
-  transition: color 0.3s ease;
+/* Slides de Livros */
+ion-slides {
+  padding-bottom: 16px; /* Aumenta o padding inferior */
 }
 
 .livro-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5px;
-  background: var(--card-bg-light);
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, background-color 0.3s ease;
-  max-width: 120px;
-  margin: 0 auto;
-  height: 250px;
+  padding: 12px; /* Aumenta o padding interno */
+  background: var(--card-background) !important;
+  border-radius: 8px;
+  width: 110px; /* Aumenta a largura */
+  height: 180px; /* Aumenta a altura */
+  margin-right: 12px; /* Aumenta a margem direita */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  perspective: 600px;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+.livro-card:active {
+  transform: scale(0.95); /* Pequena redução ao pressionar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.livro-card.selecionado {
+  transform: scale(1.08);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 
 .livro-card:hover {
-  transform: scale(1.02);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.livro-card:hover .capa-container {
+  transform: translateY(0);
+}
+
+.capa-container {
+  width: 100%;
+  height: 130px; /* Aumenta a altura do container da capa */
+  overflow: hidden;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease-in-out;
 }
 
 .livro-capa {
-  width: 95%;
-  height: 95%;
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 8px;
+  border-radius: 6px;
+  transform-origin: center;
+  transition: transform 0.15s ease-in-out;
 }
 
 .livro-titulo {
-  font-size: 14px;
+  font-size: 0.9rem;
   text-align: center;
-  color: var(--background-light);
   font-weight: 500;
+  margin: 0;
+  color: var(--text-color-primary);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.2;
+  margin-top: 6px;
   padding: 0 4px;
-  transition: color 0.3s ease;
 }
 
-.line-separator {
-  height: 1px;
-  background-color: #dddddd;
-  margin: 20px 0;
-  transition: background-color 0.3s ease;
+/* Classes de tema específicas (para consistência) */
+.toolbar-light {
+  --background: var(--toolbar-background-light);
+  --color: var(--text-color-primary-light);
 }
 
-.livro-actions {
-  display: none;
+.content-light {
+  /* --background: var(--page-background-light); */
+  --color: var(--text-color-primary-light);
+}
+
+.search-item-light {
+  --background: var(--card-background-light);
+  --color: var(--text-color-primary-light);
+}
+
+.search-label-light h2 {
+  color: var(--text-color-primary-light);
+}
+
+.light-title h2 {
+  color: var(--text-color-primary-light);
+}
+
+.light-divider {
+  background: linear-gradient(90deg, var(--highlight-light) 0%, transparent 100%);
+}
+
+.light-card {
+  background: var(--card-background-light);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.light-capa {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.carousel-card {
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out, z-index 0.2s ease-in-out;
+  opacity: 0.6;
+  transform: translateX(30%) scale(0.7);
+  z-index: 0;
 }
 
 ion-slides {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-bottom: 12px;
 }
 
-.section-title {
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-
-  h2 {
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0;
-    padding-right: 10px;
-    white-space: nowrap;
-    color: var(--text-color-dark);
-    transition: color 0.3s ease;
-  }
-
-  .divider-line {
-    flex-grow: 1;
-    height: 2px;
-    background-color: #dcdcdc;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-}
-
-.resultados-busca-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-.background-art {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.3;
-    animation: float 12s ease-in-out infinite alternate;
-  }
-
-  &::before {
-    width: 300px;
-    height: 300px;
-    background: #c3d9ff;
-    top: -100px;
-    left: -100px;
-  }
-
-  &::after {
-    width: 400px;
-    height: 400px;
-    background: #ffe2e2;
-    bottom: -150px;
-    right: -100px;
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px) scale(1);
-  }
-  100% {
-    transform: translateY(-20px) scale(1.05);
-  }
-}
-
-// Dark mode
-@media (prefers-color-scheme: dark) {
-  ion-content {
-    background-color: var(--background-dark);
-    color: var(--text-color-dark);
-  }
-
-  .title-center,
-  h2,
-  .livro-titulo {
-    color: var(--text-color-dark);
-  }
-
-  .livro-card {
-    background: var(--card-bg-dark);
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
-  }
-
-  .line-separator {
-    background-color: #444;
-  }
-
-  .section-title h2 {
-    color: var(--text-color-dark);
-  }
-
-  .divider-line {
-    background-color: #555;
-  }
-
-  .busca-container ::ng-deep ion-searchbar {
-    --background: rgba(255, 255, 255, 0.08);
-    --color: var(--text-color-dark);
-    --placeholder-color: rgba(255, 255, 255, 0.5);
-    --icon-color: var(--text-color-dark);
-    --clear-button-color: var(--text-color-dark);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .busca-container ::ng-deep ion-searchbar .searchbar-input-container {
-    border-radius: 50px !important;
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-  }
-
-  .busca-container ::ng-deep ion-searchbar:focus-within .searchbar-input-container {
-    border-color: var(--highlight);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-  }
+.swiper-slide {
+  width: auto !important;
 }

@@ -1,89 +1,64 @@
-/* ===========================
-   ESTILO DO AVATAR NO MENU
-   =========================== */
-
-/* Container principal do perfil */
+/* ESTILO DO AVATAR NO MENU */
 .perfil-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 0;
+  padding: 20px 0; /* Aumentei um pouco o padding superior e inferior */
+  animation: fadeIn 0.5s ease;
+  background: var(--ion-item-background, transparent); /* Adiciona um background transparente por padrão */
+  transition: background 0.3s ease; /* Transição suave para o modo dark */
 }
 
-/* Avatar com efeito e sombra (modo claro) */
+.dark .perfil-container {
+  background: var(--ion-color-dark, #121212); /* Background mais escuro no modo dark */
+}
+
 .perfil-container ion-avatar {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 8px;
-  border: 3px solid #5a00e0;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(90, 0, 224, 0.5);
-  padding: 4px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  width: 90px; /* Aumentei o tamanho do avatar */
+  height: 90px;
+  margin-bottom: 16px; /* Aumentei a margem inferior */
+  border: 3px solid var(--ion-color-primary); /* Borda mais grossa */
+  box-shadow: 0 3px 12px rgba(var(--ion-color-primary-rgb), 0.3); /* Sombra um pouco maior */
+  transition: all 0.3s ease;
 }
 
-/* Efeito hover (balanço e brilho) */
-.perfil-container ion-avatar:hover {
-  transform: rotate(-3deg) scale(1.05);
-  box-shadow: 0 0 15px rgba(90, 0, 224, 0.7);
+.dark .perfil-container ion-avatar {
+  border-color: var(--ion-color-primary-shade);
+  box-shadow: 0 3px 12px rgba(var(--ion-color-primary-rgb), 0.5);
 }
 
-/* Imagem do avatar */
-ion-avatar img {
-  object-fit: cover;
-}
-
-/* ===========================
-   MODO ESCURO PARA O AVATAR
-   =========================== */
-body.dark .perfil-container ion-avatar {
-  border-color: #000;
-  box-shadow: 0 0 12px rgba(179, 136, 235, 0.6);
-}
-
-body.dark .perfil-container ion-avatar:hover {
-  box-shadow: 0 0 18px rgba(179, 136, 235, 0.9);
-}
-
-/* ===========================
-   TEXTO DO PERFIL (NOME/EMAIL)
-   =========================== */
-.perfil-info {
+.perfil-container .perfil-info {
   text-align: center;
 }
 
-.perfil-info h2 {
-  font-size: 18px;
-  margin: 0;
+.perfil-container .perfil-info h2 {
+  font-size: 1.1rem; /* Aumentei o tamanho da fonte do nome */
+  margin: 0 0 6px; /* Aumentei a margem inferior */
+  animation: fadeSlideIn 0.5s ease 0.1s forwards;
+  opacity: 0;
+  color: var(--ion-text-color); /* Garante a cor do texto no modo dark */
 }
 
-.perfil-info p {
-  font-size: 14px;
-  color: gray;
-  margin: 0;
-}
-
-/* ===========================
-   COPYRIGHT NO MENU
-   =========================== */
-.copyright {
-  font-size: 0.8rem;
-  text-align: center;
+.perfil-container .perfil-info p {
+  font-size: 0.9rem; /* Aumentei o tamanho da fonte da descrição */
   color: var(--ion-color-medium);
-  margin-top: 20px;
-  padding: 10px;
-  opacity: 0.6;
-}
-
-ion-menu .copyright p {
   margin: 0;
+  animation: fadeSlideIn 0.5s ease 0.2s forwards;
+  opacity: 0;
 }
 
-body.dark .copyright {
-  color: #b388eb;
+.dark .perfil-container .perfil-info p {
+  color: var(--ion-color-light); /* Cor da descrição no modo dark */
 }
-/* Animação suave para o texto */
+
+/* MODO ESCURO (Removi a duplicação, já está no .dark globalmente) */
+
+/* ANIMAÇÕES (Mantive como está) */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes fadeSlideIn {
   0% {
     opacity: 0;
@@ -95,21 +70,91 @@ body.dark .copyright {
   }
 }
 
-/* Nome do usuário */
-.perfil-info h2 {
-  font-size: 18px;
-  margin: 0;
-  opacity: 0;
-  animation: fadeSlideIn 1s ease forwards;
+/* COPYRIGHT */
+.copyright {
+  font-size: 0.75rem; /* Aumentei um pouco o tamanho da fonte */
+  text-align: center;
+  color: var(--ion-color-medium);
+  margin-top: 25px; /* Aumentei a margem superior */
+  padding: 12px; /* Aumentei o padding */
+  opacity: 0.8; /* Aumentei um pouco a opacidade */
 }
 
-/* E-mail do usuário */
-.perfil-info p {
-  font-size: 14px;
-  color: gray;
-  margin: 0;
-  opacity: 0;
-  animation: fadeSlideIn 1s ease forwards;
-  animation-delay: 0.2s;
+.dark .copyright {
+  color: var(--ion-color-light); /* Cor do copyright no modo dark */
 }
 
+.copyright p {
+  margin: 3px 0; /* Aumentei um pouco a margem */
+}
+
+/* BOTÃO DO MODO ESCURO (Mantive como está) */
+.icone-dark-ativo {
+  color: var(--ion-color-primary) !important;
+}
+
+/* ESTILO GERAL DO MENU */
+ion-menu {
+  --width: 280px; /* Defina uma largura padrão para o menu */
+
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+    padding-top: env(safe-area-inset-top); /* Considera a área segura superior em dispositivos com notch */
+  }
+
+  ion-content {
+    --background: var(--ion-color-light);
+    --padding-bottom: 20px; /* Adiciona um pouco de padding na parte inferior */
+  }
+
+  ion-list {
+    background: transparent;
+    padding-top: 10px; /* Adiciona um pouco de espaçamento abaixo do perfil */
+  }
+
+  ion-item {
+    --background: transparent;
+    --color: var(--ion-color-dark);
+    --padding-start: 16px; /* Aumenta o padding inicial */
+    --inner-padding-end: 16px; /* Aumenta o padding final do conteúdo */
+    margin-bottom: 8px; /* Adiciona um pouco de espaço entre os itens */
+    border-radius: 8px; /* Arredonda as bordas dos itens */
+    transition: background 0.2s ease, color 0.2s ease; /* Transição suave para o hover */
+  }
+
+  ion-item:hover {
+    --background: rgba(var(--ion-color-primary-rgb), 0.1); /* Feedback visual no hover */
+    --color: var(--ion-color-primary);
+  }
+}
+
+/* MODO ESCURO PARA O MENU */
+.dark ion-menu {
+  ion-toolbar {
+    --background: var(--ion-color-dark);
+    --color: var(--ion-color-light);
+  }
+
+  ion-content {
+    --background: var(--ion-color-dark);
+  }
+
+  ion-item {
+    --color: var(--ion-color-light);
+  }
+
+  ion-item:hover {
+    --background: rgba(var(--ion-color-primary-rgb), 0.2); /* Feedback visual no hover no modo dark */
+    --color: var(--ion-color-primary-shade);
+  }
+}
+
+/* BOTÕES DO MENU */
+ion-menu ion-buttons ion-button {
+  --padding-start: 12px; /* Aumentei o padding inicial */
+  --padding-end: 12px; /* Aumentei o padding final */
+  --border-radius: 8px; /* Arredondei os botões */
+  margin: 4px 8px; /* Adicionei margem para separação */
+  font-weight: 500; /* Deixei a fonte um pouco mais forte */
+}

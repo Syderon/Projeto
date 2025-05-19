@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { LoginPage } from './pages/login/login.page';
-import { GenerosPage } from './pages/generos/generos.page'; // Importação direta
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';

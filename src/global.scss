@@ -8,7 +8,7 @@
  * For more information on global stylesheets, visit the documentation:
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
- 
+
 
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
@@ -36,73 +36,82 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 //@import "@ionic/angular/css/palettes/dark.system.css";
-body.dark {
-    --ion-background-color: #000000;
-    --ion-text-color: #ffffff;
-    --ion-color-primary: #6f9ff9;
-    --ion-color-secondary: #64d2ff;
-  }
 
-  body.dark {
-    --ion-background-color: #000000df;
-    --ion-text-color: #ffffff;
+
+body.dark {
   
-    --ion-color-primary: #5d00ff; /* Roxo principal */
-    --ion-color-primary-rgb: 155, 89, 182;
-    --ion-color-primary-contrast: #ffffff;
-    --ion-color-primary-contrast-rgb: 255, 255, 255;
-    --ion-color-primary-shade: #5d00ff;
-    --ion-color-primary-tint: #5d00ff;
+  --ion-background-color: linear-gradient(to bottom, #000000, #555555,  #1f1f1f); /* Gradiente de preto claro para cinza claro */
+  --ion-text-color: #ffffff !important; /* Força a cor do texto geral para branco no modo dark */
+
+
+  --ion-color-primary: #5d00ff; /* Roxo principal */
+  --ion-color-primary-rgb: 155, 89, 182;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #5d00ff;
+  --ion-color-primary-tint: #5d00ff;
+
+  --ion-item-background: #21212100;
+  --ion-toolbar-background: linear-gradient(to bottom, #0b0b0b, #434343, #1f1f1f); /* Gradiente de preto claro para cinza claro na toolbar */
+  --ion-card-background: #15151500;
   
-    --ion-item-background: #21212100;
-    --ion-toolbar-background: #1e1e1e00;
-    --ion-card-background: #1e1e1e00;
-  }
-  ion-item {
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  ion-item:hover {
-    --background: var(--ion-color-primary-tint);
-    --color: var(--ion-color-primary-contrast);
-  }
-  ion-icon {
-    transition: color 0.3s ease;
-  }
-  ion-item.selected {
-    --background: var(--ion-color-primary);
-    --color: var(--ion-color-primary-contrast);
-    border-radius: 10px;
-  }
-  
-  ion-menu ion-item {
-    --transition: background-color 0.3s ease, color 0.3s ease;
-    border-radius: 8px;
-    margin: 4px 8px;
-  }
-  
-  ion-menu ion-item:hover {
-    background-color: rgba(100, 100, 255, 0.1);
-    color: #5d00ff;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  ion-menu ion-item ion-icon {
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-  
-  ion-menu ion-item:hover ion-icon {
-    transform: scale(1.2) rotate(-5deg);
-    color: #5d00ff;
-  }
-  
-  
-  body.dark ion-icon {
-    color: #5d00ff ; /* ou qualquer outra cor que fique visível */
-  }
-  .icone-dark-ativo {
-    color: #FFD700 !important;  /* Cor amarela */
-    text-shadow: 0 0 8px #FFD700, 0 0 16px #FFA500 !important;  /* Brilho amarelo */
-    transform: scale(1.15);  /* Aumentando um pouco o ícone */
-    transition: all 0.10s ease-in-out;  /* Efeito suave */
-  }
-  
+}
+
+/* Estilos para o modo claro (Padrão) */
+body:not(.dark) {
+  /* Fundo da página com gradiente azul para cinza */
+  --ion-background-color: linear-gradient(to bottom, #ADD8E6, #D3D3D3); /* Azul claro para cinza claro */
+  --ion-background-color-rgb: 173, 216, 230, 211, 211, 211;
+  --ion-text-color: #000000; /* Cor do texto padrão para o modo claro */
+}
+
+/* Barra de navegação no modo claro com gradiente azul para cinza */
+ion-toolbar:not(.dark) {
+
+  --color: #000000; /* Cor do texto/ícones na barra de navegação no modo claro */
+}
+
+ion-item {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+ion-item:hover {
+  --background: var(--ion-color-primary-tint);
+  --color: var(--ion-color-primary-contrast);
+}
+
+ion-icon {
+  transition: color 0.3s ease;
+}
+
+ion-item.selected {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast);
+  border-radius: 10px;
+}
+
+ion-menu ion-item {
+  --transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 8px;
+  margin: 4px 8px;
+}
+
+ion-menu ion-item:hover {
+  background-color: rgba(100, 100, 255, 0.1);
+  color: #5d00ff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+ion-menu ion-item ion-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+ion-menu ion-item:hover ion-icon {
+  transform: scale(1.2) rotate(-5deg);
+  color: #5d00ff;
+}
+
+
+body.dark ion-icon {
+  color: #5d00ff ; /* ou qualquer outra cor que fique visível */
+}

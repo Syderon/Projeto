@@ -1,11 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ToastController } from '@ionic/angular';
 import { initPaperCanvas } from '../../../paper-shapes';
-
 
 @Component({
   selector: 'app-cadastro',
@@ -14,7 +13,7 @@ import { initPaperCanvas } from '../../../paper-shapes';
 })
 export class CadastroPage implements OnInit, AfterViewInit {
   cadastroForm!: FormGroup;
-  avatarImage: File | null = null;
+  avatarImage: string | ArrayBuffer | null = null;
   showSuccessMessage = false;
   showErrorMessage = false;
   successMessage = 'Conta criada com sucesso! 🎉';
@@ -38,28 +37,27 @@ export class CadastroPage implements OnInit, AfterViewInit {
   ngOnInit() {
     this.cadastroForm = this.fb.group({
       nome: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email, this.emailValidator]],
+      email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
       celular: ['', [Validators.pattern(/^[0-9]{10,11}$/)]],
       avatar: ['']
     });
 
-    setTimeout(() => {
-      this.animationDone = true;
-    }, 100);
+    this.triggerAnimation();
   }
 
   ngAfterViewInit() {
     initPaperCanvas();
   }
 
-  togglePasswordVisibility() {
-    this.passwordVisible = !this.passwordVisible;
+  private triggerAnimation() {
+    setTimeout(() => {
+      this.animationDone = true;
+    }, 100);
   }
 
-  emailValidator(control: any) {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(control.value) ? null : { invalidEmail: true };
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
   }
 
   abrirSeletorDeImagem() {
@@ -67,8 +65,16 @@ export class CadastroPage implements OnInit, AfterViewInit {
   }
 
   onFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
+    const files = event.target?.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+
+      if (!file.type.startsWith('image/')) {
+        console.warn('Arquivo inválido. Apenas imagens são permitidas.');
+        this.presentToast('Arquivo inválido. Apenas imagens são permitidas.', 'danger');
+        return;
+      }
+
       this.avatarImage = file;
       this.cadastroForm.patchValue({ avatar: file.name });
     }
@@ -76,6 +82,22 @@ export class CadastroPage implements OnInit, AfterViewInit {
 
   voltar() {
     this.navCtrl.back();
+  }
+
+  private resetMessages() {
+    this.showSuccessMessage = false;
+    this.showErrorMessage = false;
+    this.showFireworks = false;
+  }
+
+  private async presentToast(message: string, color: 'success' | 'danger') {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      position: 'top',
+      color
+    });
+    await toast.present();
   }
 
   async onSubmit() {
@@ -86,39 +108,30 @@ export class CadastroPage implements OnInit, AfterViewInit {
 
     try {
       const userCredential = await this.authService.register(email, senha, nome, this.avatarImage);
-      
+
+      this.resetMessages();
       this.showSuccessMessage = true;
-      this.showErrorMessage = false;
       this.showFireworks = true;
 
-      const toast = await this.toastController.create({
-        message: this.successMessage,
-        duration: 2000,
-        position: 'top',
-        color: 'success'
-      });
-      await toast.present();
+      await this.presentToast(this.successMessage, 'success');
 
       setTimeout(() => {
-        this.router.navigate(['/login'], { 
-          state: { registeredEmail: email } 
-        });
+        this.router.navigate(['/login'], { state: { registeredEmail: email } });
       }, 2000);
 
     } catch (error: any) {
       console.error('Erro no cadastro:', error);
-      this.errorMessage = error.message || this.errorMessage;
-      this.showSuccessMessage = false;
+      this.resetMessages();
       this.showErrorMessage = true;
-      this.showFireworks = false;
 
-      const toast = await this.toastController.create({
-        message: this.errorMessage,
-        duration: 3000,
-        position: 'top',
-        color: 'danger'
-      });
-      await toast.present();
+      if (error?.message) {
+        this.errorMessage = error.message;
+      } else {
+        this.errorMessage = 'Erro inesperado. Tente novamente.';
+      }
+
+      await this.presentToast(this.errorMessage, 'danger');
+
     } finally {
       this.isSubmitting = false;
     }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
 
 /* Estilos base do ion-content */
 ion-content {
@@ -18,7 +20,7 @@ ion-content {
   display: flex;
   justify-content: center;
   animation: fadeInUp 0.8s ease;
- }
+}
 
 /* Container do login - ajustado para melhor contraste */
 .login-container {
@@ -32,24 +34,6 @@ ion-content {
   color: #e0e0e000;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0);
-  
-}
-
-
-.app-title {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid rgba(129, 129, 129, 0.853);
-  font-size: 1.6rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #5d00ff, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  width: 0;
-  animation:
-    typing 3s steps(20, end) forwards,
-    blink-caret 0.75s step-end infinite;
 }
 
 .app-subtitle {
@@ -88,15 +72,30 @@ ion-input::part(native) {
 }
 
 ion-icon {
-  color: #5d00ff;
-  background-color: #ffffff00;
+  color: #555555; /* cor básica cinza escuro */
+  background-color: transparent;
   border-radius: 15px;
   position: relative;
-  
+  cursor: pointer;
+
+  /* Neon azul claro seguindo o contorno do ícone */
+  filter:
+    drop-shadow(0 0 4px rgb(0, 0, 0))
+    drop-shadow(0 0 8px rgba(0, 0, 0, 0.693));
+
+  transition: color 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+}
+
+ion-icon:hover {
+  color: #000000;
+  transform: scale(1.1);
+  filter:
+    drop-shadow(0 0 8px rgb(0, 255, 179))
+    drop-shadow(0 0 15px rgb(100, 180, 255));
 }
 
 .login-button {
-  --background: linear-gradient(to right, #04ff00, #5d00ff);
+  --background: linear-gradient(to right,  rgb(0, 13, 255),  rgb(100, 180, 255));
   border-radius: 16px;
   font-weight: bold;
   letter-spacing: 1px;
@@ -130,8 +129,6 @@ ion-text p {
   color: #f03d3d;
 }
 
- 
-
 @keyframes typing {
   from { width: 0; }
   to { width: 100%; }
@@ -149,17 +146,29 @@ ion-text p {
   }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.app-title {
+  font-family: 'Press Start 2P', cursive;
+
+  font-size: 2rem;
+  font-weight: 900;
+  background: linear-gradient(90deg,  rgb(0, 13, 255),rgb(100, 180, 255), #5d00ff);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: slideBG 3s linear infinite;
+    animation: colorShift 8s ease infinite;
+
+}
+@keyframes colorShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
+@keyframes slideBG {
+  from { background-position: 0% 0; }
+  to { background-position: 100% 0; }
+}
 
 @media only screen and (max-width: 768px) {
   ion-content {
@@ -183,7 +192,13 @@ ion-text p {
     transform: scale(0.1); /* Reduz ainda mais para mobile */
   }
 }
+
 .canvas-background {
   height: 100px; /* Altura fixa */
 }
- 
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

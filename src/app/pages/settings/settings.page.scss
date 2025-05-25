@@ -1,0 +1,70 @@
+/* Adicione ao seu arquivo settings.page.scss */
+
+ion-content {
+  --background: var(--page-background);
+  --color: var(--text-color-primary);
+}
+
+ion-list {
+  background: transparent;
+}
+
+ion-item {
+  --background: var(--card-background);
+  --color: var(--text-color-primary);
+  --border-color: var(--border-color);
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --min-height: 56px;
+}
+
+ion-list-header {
+  --background: transparent;
+  --color: var(--highlight);
+  padding-inline-start: 16px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+ion-icon {
+  color: var(--highlight);
+  margin-right: 16px;
+}
+
+ion-toggle {
+  --background: var(--border-color);
+  --background-checked: var(--highlight);
+  --handle-background: var(--text-color-secondary);
+  --handle-background-checked: var(--text-color-primary);
+  padding: 12px 0;
+}
+
+ion-select {
+  width: 100%;
+  justify-content: flex-start;
+  padding-left: 0;
+}
+
+/* Estilo para itens desabilitados */
+ion-item[disabled] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Estilo para o modo escuro */
+.dark {
+  ion-list-header {
+    --color: var(--highlight-dark);
+  }
+
+  ion-icon {
+    color: var(--highlight-dark);
+  }
+
+  ion-toggle {
+    --background-checked: var(--highlight-dark);
+  --handle-background-checked: var(--text-color-primary-dark);
+  --handle-background: var(--text-color-secondary-dark);
+  --background: var(--border-color-dark);
+  }
+}

@@ -1,4 +1,3 @@
-/* Estilos base do ion-content */
 ion-content {
   --background: radial-gradient(ellipse at top left, #1e1e1e, #2c2c2c, #3a3a3a);
   position: relative;
@@ -8,7 +7,6 @@ ion-content {
   justify-content: center;
 }
 
-/* Seção de cadastro - com z-index maior que o canvas */
 .register-section {
   position: relative;
   z-index: 100;
@@ -19,9 +17,8 @@ ion-content {
   animation: fadeInUp 0.8s ease;
 }
 
-/* Container do cadastro - estilo escuro com blur */
 .register-container {
-  background: transparent !important;
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(16px);
   border-radius: 1rem;
   padding: 1.5rem;
@@ -33,7 +30,6 @@ ion-content {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Estilos do título animado */
 .app-title {
   display: inline-block;
   white-space: nowrap;
@@ -41,13 +37,11 @@ ion-content {
   border-right: 2px solid rgba(224, 224, 224, 0.8);
   font-size: 1.6rem;
   font-weight: 700;
-  background: linear-gradient(90deg, #5d00ff, #ffffffdb);
+  background: linear-gradient(90deg, white);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   width: 0;
-  animation:
-    typing 3s steps(20, end) forwards,
-    blink-caret 0.75s step-end infinite;
+  animation: typing 3s steps(20, end) forwards, blink-caret 0.75s step-end infinite;
 }
 
 .app-subtitle {
@@ -56,9 +50,7 @@ ion-content {
   margin-top: 0.2rem;
   opacity: 0;
   transform: translateY(10px);
-  animation:
-    fadeInSubtitle 0.8s ease-out forwards 3s,
-    blinkHighlight 1.5s ease-in-out infinite 3.8s;
+  animation: fadeInSubtitle 0.8s ease-out forwards 3s, blinkHighlight 1.5s ease-in-out infinite 3.8s;
   background: linear-gradient(90deg, #5b5b5b, #efeded);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -70,88 +62,92 @@ ion-content {
   margin-bottom: 1.5rem;
 }
 
-/* Estilos do formulário */
 .register-form ion-item {
-  --background: rgba(255, 0, 0, 0);
+  --background: transparent !important;
   --border-radius: 12px;
   --padding-start: 12px;
   margin-bottom: 1rem;
   --color: #e0e0e0;
-  --highlight-color-focused: #5d00ff;
+  --highlight-color-focused: rgb(0, 13, 255), rgb(100, 180, 255), #5d00ff;
   --box-shadow: none;
 }
 
-/* Input válido (color primary) - texto branco */
 ion-input[color="primary"]::part(native) {
   color: #ffffff !important;
   caret-color: #ffffff !important;
 }
 
-/* Input inválido (color danger) - texto vermelho */
 ion-input[color="danger"]::part(native) {
-  color: #ff4444 !important;  /* vermelho forte */
+  color: #ff4444 !important;
   caret-color: #ff4444 !important;
 }
 
-
-
 ion-icon {
-  color: #5d00ff;
+  color: #ffffff;
   align-items: center;
- }
+}
 
-/* Botões */
+/* Botão para selecionar avatar */
 .avatar-btn {
-  --border-color: #5d00ff00;
-  --color: #5d00ff;
+  --border-color: transparent;
+  --color: #ffffff;
   --background-activated: rgba(124, 77, 255, 0.1);
   margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+
+  img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #5d00ff;
+  }
 }
 
 .submit-btn {
-  --background: linear-gradient(to right, #5d00ff, #46ff40);
+  --background: linear-gradient(to right, rgb(0, 13, 255), rgb(100, 180, 255), #5d00ff);
   --border-radius: 5px;
   --color: white;
   font-weight: 600;
   margin-top: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:active {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(124, 77, 255, 0.7);
+  }
 }
 
-.submit-btn:active {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(124, 77, 255, 0.7);
-}
-
-/* Mensagens */
 .mensagem {
   padding: 0.8rem;
   border-radius: 8px;
   margin-bottom: 1rem;
   font-size: 0.9rem;
-  
+
   &.sucesso {
     background: rgba(76, 175, 80, 0.2);
     color: #4CAF50;
   }
-  
+
   &.erro {
     background: rgba(244, 67, 54, 0.2);
     color: #f44336;
   }
 }
 
-/* Links adicionais */
 .additional-actions {
   margin-top: 1rem;
-  
+
   ion-button {
     --color: #ffffffcc;
-    --color-activated: #fffeff;
+    --color-activated: #ffffff;
     font-size: 0.5rem;
   }
 }
 
-/* Canvas background */
 .canvas-background {
   position: absolute;
   top: 0;
@@ -161,7 +157,6 @@ ion-icon {
   z-index: 1;
 }
 
-/* Botão voltar */
 .botao-voltar {
   position: fixed;
   top: 20px;
@@ -171,7 +166,6 @@ ion-icon {
   --color-activated: #ffffff;
 }
 
-/* Animações */
 @keyframes typing {
   from { width: 0; }
   to { width: 100%; }
@@ -205,21 +199,20 @@ ion-icon {
   50% { opacity: 1; }
 }
 
-/* Responsividade */
 @media only screen and (max-width: 768px) {
   ion-content {
     padding-top: 10%;
   }
-  
+
   .register-container {
     padding: 1.2rem;
     margin-top: 40px;
   }
-  
+
   .app-title {
     font-size: 1.4rem;
   }
-  
+
   .botao-voltar {
     top: 10px;
     left: 10px;
@@ -230,3 +223,8 @@ ion-button[fill="clear"] {
   font-size: 1rem;
 }
 
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

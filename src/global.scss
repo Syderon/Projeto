@@ -40,19 +40,19 @@
 
 body.dark {
   
-  --ion-background-color: linear-gradient(to bottom, #000000, #555555,  #1f1f1f); /* Gradiente de preto claro para cinza claro */
-  --ion-text-color: #ffffff !important; /* Força a cor do texto geral para branco no modo dark */
+  --ion-background-color: linear-gradient(to bottom, #000000f1, #2f2f2fe9,  #0f0e0efe); /* Gradiente de preto claro para cinza claro */
+  --ion-text-color: #fdfdfd !important; /* Força a cor do texto geral para branco no modo dark */
 
 
-  --ion-color-primary: #5d00ff; /* Roxo principal */
+  --ion-color-primary: #0553a700; /* Roxo principal */
   --ion-color-primary-rgb: 155, 89, 182;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #5d00ff;
-  --ion-color-primary-tint: #5d00ff;
+  --ion-color-primary-shade: #005cad;
+  --ion-color-primary-tint: #035fb0;
 
   --ion-item-background: #21212100;
-  --ion-toolbar-background: linear-gradient(to bottom, #0b0b0b, #434343, #1f1f1f); /* Gradiente de preto claro para cinza claro na toolbar */
+  --ion-toolbar-background: linear-gradient(to bottom, #dddddd, #d0d0d0, #005cb3); /* Gradiente de preto claro para cinza claro na toolbar */
   --ion-card-background: #15151500;
   
 }
@@ -60,15 +60,18 @@ body.dark {
 /* Estilos para o modo claro (Padrão) */
 body:not(.dark) {
   /* Fundo da página com gradiente azul para cinza */
-  --ion-background-color: linear-gradient(to bottom, #ADD8E6, #D3D3D3); /* Azul claro para cinza claro */
-  --ion-background-color-rgb: 173, 216, 230, 211, 211, 211;
-  --ion-text-color: #000000; /* Cor do texto padrão para o modo claro */
-}
+  --ion-background-color: linear-gradient(to bottom, #ffffffd2, #c4c4c4e4, #b6b6b6a9); /* Azul claro para cinza claro */
+   --ion-text-color: #000000; /* Cor do texto padrão para o modo claro */
+ }
 
 /* Barra de navegação no modo claro com gradiente azul para cinza */
-ion-toolbar:not(.dark) {
+ 
+body.dark ion-toolbar {
+  --ion-toolbar-background: #321fe100; /* ou qualquer outra cor ou gradiente */
+}
 
-  --color: #000000; /* Cor do texto/ícones na barra de navegação no modo claro */
+body:not(.dark) ion-toolbar {
+  --ion-toolbar-background: #ff1b1b00; /* ou qualquer cor sólida ou gradiente */
 }
 
 ion-item {
@@ -97,8 +100,8 @@ ion-menu ion-item {
 }
 
 ion-menu ion-item:hover {
-  background-color: rgba(100, 100, 255, 0.1);
-  color: #5d00ff;
+  background-color: rgb(0, 0, 255);
+  color: #014996;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -108,10 +111,10 @@ ion-menu ion-item ion-icon {
 
 ion-menu ion-item:hover ion-icon {
   transform: scale(1.2) rotate(-5deg);
-  color: #5d00ff;
+  color: #0d009c;
 }
 
 
 body.dark ion-icon {
-  color: #5d00ff ; /* ou qualquer outra cor que fique visível */
+  color: #005eff  ; /* ou qualquer outra cor que fique visível */
 }

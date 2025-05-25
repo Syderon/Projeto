@@ -1,19 +1,14 @@
-
 <ion-content fullscreen>
-  <!-- Canvas background (mesmo efeito do login) -->
+  <!-- Canvas background -->
   <div class="canvas-background">
     <canvas id="canvas"></canvas>
   </div>
 
-  <!-- Container principal -->
   <div class="form-wrapper">
-    
-
     <div class="register-section">
       <div class="register-container">
-        <!-- Cabeçalho com animação de digitação -->
         <div class="logo-container">
-          <h1 class="app-title">Mundo da Leitura</h1>
+          <h1 class="app-title">Cadastre-se</h1>
           <p class="app-subtitle">Join our reading community</p>
         </div>
 
@@ -21,7 +16,6 @@
           <p>Criar Conta</p>
         </div>
 
-        <!-- Mensagens -->
         <div *ngIf="showSuccessMessage" class="mensagem sucesso">
           {{ successMessage }}
         </div>
@@ -29,16 +23,15 @@
           {{ errorMessage }}
         </div>
 
-        <!-- Formulário -->
         <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" class="register-form">
-          <!-- Campos do formulário com animação -->
           <div class="form-input" [class.animate-item]="animationDone" style="animation-delay: 0.1s">
             <ion-item [class.error]="isCampoInvalido('nome')">
               <ion-icon slot="start" name="person"></ion-icon>
               <ion-label position="floating">
                 {{ isCampoInvalido('nome') ? 'Nome obrigatório' : 'Nome' }}
               </ion-label>
-              <ion-input formControlName="nome" [color]="isCampoInvalido('nome') ? 'danger' : 'primary'"></ion-input>
+              <ion-input formControlName="nome" aria-label="Nome"
+                [color]="isCampoInvalido('nome') ? 'danger' : 'primary'"></ion-input>
             </ion-item>
           </div>
 
@@ -48,7 +41,7 @@
               <ion-label position="floating">
                 {{ isCampoInvalido('email') ? 'Email inválido' : 'Email' }}
               </ion-label>
-              <ion-input type="email" formControlName="email"
+              <ion-input type="email" formControlName="email" aria-label="Email"
                 [color]="isCampoInvalido('email') ? 'danger' : 'primary'"></ion-input>
             </ion-item>
           </div>
@@ -59,7 +52,7 @@
               <ion-label position="floating">
                 {{ isCampoInvalido('senha') ? 'Senha obrigatória' : 'Senha' }}
               </ion-label>
-              <ion-input [type]="passwordVisible ? 'text' : 'password'" formControlName="senha"
+              <ion-input [type]="passwordVisible ? 'text' : 'password'" formControlName="senha" aria-label="Senha"
                 [color]="isCampoInvalido('senha') ? 'danger' : 'primary'"></ion-input>
               <ion-button fill="clear" slot="end" type="button" (click)="togglePasswordVisibility()">
                 <ion-icon [name]="passwordVisible ? 'eye-off' : 'eye'"></ion-icon>
@@ -71,11 +64,11 @@
             <ion-item>
               <ion-icon slot="start" name="call"></ion-icon>
               <ion-label position="floating">Celular</ion-label>
-              <ion-input type="tel" formControlName="celular"></ion-input>
+              <ion-input type="tel" formControlName="celular" aria-label="Celular"></ion-input>
             </ion-item>
           </div>
 
-          <ion-button expand="block" fill="outline" (click)="abrirSeletorDeImagem()" class="avatar-btn" 
+          <ion-button expand="block" fill="solid" (click)="abrirSeletorDeImagem()" class="avatar-btn"
             [class.animate-item]="animationDone" style="animation-delay: 0.5s">
             <ion-icon name="image" slot="start"></ion-icon>
             Selecionar Avatar
@@ -83,9 +76,21 @@
 
           <input type="file" #avatarInput accept="image/*" (change)="onFileSelected($event)" hidden />
 
-          <ion-button expand="block" type="submit" [disabled]="cadastroForm.invalid" class="submit-btn"
-            [class.animate-item]="animationDone" style="animation-delay: 0.6s">
-            Cadastrar
+          <!-- Pré-visualização da imagem -->
+          <div *ngIf="avatarImage" class="avatar-preview">
+            <p>Pré-visualização:</p>
+            <img [src]="avatarImage" alt="Pré-visualização do avatar" />
+          </div>
+
+          <ion-button expand="block" type="submit" [disabled]="cadastroForm.invalid || isSubmitting"
+            class="submit-btn" [class.animate-item]="animationDone" style="animation-delay: 0.6s">
+            <ion-icon name="person-add" slot="start"></ion-icon>
+            <ng-container *ngIf="!isSubmitting; else loading">
+              Cadastrar
+            </ng-container>
+            <ng-template #loading>
+              <ion-spinner name="crescent"></ion-spinner>
+            </ng-template>
           </ion-button>
 
           <div class="additional-actions">

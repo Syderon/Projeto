@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-acao',
-  templateUrl: './acao.page.html',
-  styleUrls: ['./acao.page.scss'],
+  selector: 'app-comedia',
+  templateUrl: './comedia.page.html',
+  styleUrls: ['./comedia.page.scss'],
 })
-export class AcaoPage {
+export class ComediaPage {
   isDarkMode = false;
 
   slideOpts = {
@@ -14,14 +14,14 @@ export class AcaoPage {
     freeMode: true
   };
 
-  livrosAcao = [
+  livrosComedia = [
     {
-      titulo: 'Missão Impossível',
-      capa: 'assets/livros/acao1.jpg'
+      titulo: 'O Guia do Mochileiro das Galáxias',
+      capa: 'assets/livros/comedia1.jpg'
     },
     {
-      titulo: 'O Protetor',
-      capa: 'assets/livros/acao2.jpg'
+      titulo: 'Diário de um Banana',
+      capa: 'assets/livros/comedia2.jpg'
     }
     // Adicione mais livros conforme desejar
   ];

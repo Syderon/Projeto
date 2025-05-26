@@ -1,20 +1,28 @@
-<ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/generos"></ion-back-button>
-      </ion-buttons>
-      <ion-title>Suspense</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Bem-vindo ao gênero Suspense</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        Aqui você verá os livros de suspense.
-      </ion-card-content>
-    </ion-card>
-  </ion-content>
-  
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/generos"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Suspense</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" [class.dark]="isDarkMode" #content>
+  <div class="content-wrapper">
+
+    <div class="section-title">
+      <h2>Livros de Suspense</h2>
+      <div class="divider-line"></div>
+    </div>
+
+    <ion-slides [options]="slideOpts">
+      <ion-slide *ngFor="let livro of livrosSuspense">
+        <div class="livro-card" (click)="lerLivro(livro)">
+          <img [src]="livro.capa" class="livro-capa" [alt]="'Capa do livro: ' + livro.titulo">
+          <p class="livro-titulo">{{ livro.titulo }}</p>
+        </div>
+      </ion-slide>
+    </ion-slides>
+
+  </div>
+</ion-content>

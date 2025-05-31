@@ -1,0 +1,208 @@
+/* Variáveis de Cores (Ajuste para sua paleta) */
+:root {
+  --ion-color-primary: #5260ff; // Azul suave
+  --ion-color-primary-rgb: 82, 96, 255;
+  --ion-color-secondary: #00c4a7; // Verde água
+  --ion-color-secondary-rgb: 0, 196, 167;
+  --ion-color-light: #f7f8fc;
+  --ion-color-medium: #a8a8af;
+  --ion-color-dark: #3a3a3a;
+  --ion-color-step-50: #f2f2f2;
+}
+
+// Estilização global do modal para fazê-lo parecer um card
+ion-modal {
+  // Isso define o tamanho do modal como um card
+  --width: 90%; // Largura do modal (pode ser em px, vw, etc.)
+  --max-width: 500px; // Largura máxima para telas maiores
+  --height: auto; // Altura ajusta-se ao conteúdo
+  --max-height: 90%; // Altura máxima para não estourar a tela
+  --border-radius: 12px; // Cantos arredondados
+  --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); // Sombra que o faz "flutuar"
+  --background: #ffffff; // Fundo branco do modal
+  --backdrop-opacity: 0.5; // Opacidade do fundo escuro
+}
+
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: #ffffff;
+    border-radius: 12px 12px 0 0; // Bordas arredondadas apenas no topo do header
+    box-shadow: none; // Sem sombra no toolbar para um look mais limpo
+
+    ion-title {
+      font-size: 1.15em;
+      font-weight: 600;
+      padding-inline-end: 20px;
+    }
+
+    ion-button {
+      --color: #ffffff;
+    }
+  }
+}
+
+ion-content {
+  --background: #ffffff; // Fundo branco para o conteúdo do card
+  padding: 0; // Remove padding padrão do ion-content, o card interno terá o seu
+
+  .book-detail-card {
+    // Este div agora é o conteúdo principal dentro do modal-card
+    background: #ffffff;
+    border-radius: 0; // Removido o arredondamento se o modal já tem
+    box-shadow: none; // Sem sombra aqui, já que o modal pai tem uma
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    padding-bottom: 24px; // Espaço no final para o conteúdo
+
+    .book-cover-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 24px 0; // Espaço para a capa
+      background: var(--ion-color-step-50); // Um cinza claro para o fundo da capa
+      border-bottom: 1px solid var(--ion-color-step-100); // Linha sutil para separar
+      
+      .book-cover {
+        max-width: 140px; // Tamanho compacto para a capa
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); // Sombra para a capa
+        object-fit: contain;
+      }
+    }
+
+    .book-info {
+      width: 100%;
+      padding: 0 20px; // Padding horizontal para as informações
+      margin-top: 20px;
+
+      .info-item {
+        --padding-start: 0;
+        --inner-padding-end: 0;
+        --background: transparent;
+        --border-color: var(--ion-color-step-100); // Bordas sutis
+        --highlight-height: 0; // Remove a linha de foco
+        margin-bottom: 16px;
+
+        &:last-child {
+          margin-bottom: 0; // Remove margin do último item
+        }
+
+        ion-label {
+          margin-top: 0;
+          margin-bottom: 0;
+          p.label-title {
+            font-size: 0.8em;
+            color: var(--ion-color-medium);
+            margin-bottom: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+          }
+
+          h3.info-text {
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--ion-color-dark);
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+
+          p.description-text {
+            font-size: 0.9em;
+            color: var(--ion-color-dark);
+            line-height: 1.5;
+            text-align: justify;
+            white-space: normal;
+            margin-top: 6px;
+          }
+        }
+      }
+    }
+  }
+}
+
+ion-footer {
+  ion-toolbar {
+    --background: #ffffff;
+    border-radius: 0 0 12px 12px; // Bordas arredondadas apenas no rodapé
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05); // Sombra suave para separar o rodapé
+
+    display: flex; // Usar flexbox para alinhar os botões
+    justify-content: space-around; // Distribui os botões uniformemente
+    padding: 8px 16px; // Padding interno
+
+    ion-buttons {
+      flex: 1; // Permite que cada grupo de botões ocupe seu espaço
+      display: flex; // Para alinhar o conteúdo dentro do ion-buttons
+      justify-content: center; // Centraliza o botão dentro do seu slot
+      &:first-child {
+        margin-right: 8px; // Espaço entre os grupos de botões
+      }
+      &:last-child {
+        margin-left: 8px;
+      }
+    }
+
+    ion-button {
+      --padding-start: 18px;
+      --padding-end: 18px;
+      --border-radius: 8px;
+      height: 44px; // Altura fixa para os botões
+      font-size: 0.95em;
+      font-weight: 600;
+      text-transform: uppercase;
+      // Removendo 'expand="block"' do HTML, pois o flexbox aqui já controla o alinhamento
+      // Se quiser que o botão ocupe toda a largura do seu slot: width: 100%;
+
+      &[color="secondary"] {
+        --background: var(--ion-color-secondary);
+        --background-activated: var(--ion-color-secondary-shade);
+        --color: #ffffff;
+      }
+      &[color="primary"] {
+        --background: var(--ion-color-primary);
+        --background-activated: var(--ion-color-primary-shade);
+        --color: #ffffff;
+      }
+    }
+  }
+}
+
+/* Responsividade para Telas Maiores (Desktop/Tablet) */
+@media (min-width: 768px) {
+  ion-modal {
+    // Manter as definições de tamanho já ajustadas para desktop
+    --width: 500px; // Largura específica para telas maiores
+    --height: auto;
+    --max-height: 80%; // Ajuste da altura máxima
+  }
+
+  ion-content {
+    .book-detail-card {
+      flex-direction: row; // Layout lado a lado em desktop
+      align-items: flex-start;
+      padding: 0;
+
+      .book-cover-wrapper {
+        flex: 0 0 180px; // Largura fixa para a capa
+        padding: 30px;
+        border-bottom: none; // Remove a borda de baixo
+        border-right: 1px solid var(--ion-color-step-100); // Borda vertical
+        
+        .book-cover {
+          height: 200px; // Altura fixa para a capa
+          max-width: 100%;
+          object-fit: cover; // Corta para preencher
+        }
+      }
+
+      .book-info {
+        flex: 1; // Ocupa o restante do espaço
+        padding: 24px; // Mais padding
+      }
+    }
+  }
+}

@@ -1,28 +1,30 @@
-<ion-header [translucent]="true" [class.header-scrolled]="isScrolled"> <ion-toolbar>
+<ion-header [translucent]="true" [class.header-scrolled]="isScrolled">
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
     <ion-searchbar id="searchbar" showCancelButton="focus" debounce="300" placeholder="Pesquisar..." aria-label="Pesquisar livros por título ou autor" (ionInput)="buscarLivro($event)"></ion-searchbar>
 
-
-    <ion-buttons slot="end"> <ion-button (click)="logout()">
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
         <ion-icon name="log-out-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" [class.dark]="isDarkMode" #content> <div class="content-wrapper">
+<ion-content [fullscreen]="true" [class.dark]="isDarkMode" #content>
+  <div class="content-wrapper">
     <div *ngIf="resultadosBusca.length > 0" class="search-results">
       <ion-virtual-scroll [items]="resultadosBusca" approxItemHeight="70px">
-        <ion-item *virtualItem="let livro; let i = index; trackBy: trackByLivro" (click)="lerLivro(livro)" lines="none">
+        <ion-item *virtualItem="let livro; let i = index; trackBy: trackByLivro" (click)="abrirModal(livro)" lines="none">
           <ion-thumbnail slot="start">
             <img [src]="livro.capa" class="result-thumbnail" [alt]="'Capa do livro: ' + livro.titulo">
           </ion-thumbnail>
           <ion-label>
             <h2>{{ livro.titulo }}</h2>
-            </ion-label>
+          </ion-label>
         </ion-item>
       </ion-virtual-scroll>
     </div>
@@ -40,7 +42,7 @@
       </div>
       <ion-slides [options]="slideOpts">
         <ion-slide *ngFor="let livro of livrosDestaques; let i = index; trackBy: trackByLivro">
-          <div class="livro-card" (click)="lerLivro(livro)">
+          <div class="livro-card" (click)="abrirModal(livro)">
             <img [src]="livro.capa" class="livro-capa" [alt]="'Capa do livro: ' + livro.titulo">
             <p class="livro-titulo">{{ livro.titulo }}</p>
           </div>
@@ -53,7 +55,7 @@
       </div>
       <ion-slides [options]="slideOpts">
         <ion-slide *ngFor="let livro of livrosMaisLidos; let i = index; trackBy: trackByLivro">
-          <div class="livro-card" (click)="lerLivro(livro)">
+          <div class="livro-card" (click)="abrirModal(livro)">
             <img [src]="livro.capa" class="livro-capa" [alt]="'Capa do livro: ' + livro.titulo">
             <p class="livro-titulo">{{ livro.titulo }}</p>
           </div>
@@ -66,7 +68,7 @@
       </div>
       <ion-slides [options]="slideOpts">
         <ion-slide *ngFor="let livro of livrosRecentes; let i = index; trackBy: trackByLivro">
-          <div class="livro-card" (click)="lerLivro(livro)">
+          <div class="livro-card" (click)="abrirModal(livro)">
             <img [src]="livro.capa" class="livro-capa" [alt]="'Capa do livro: ' + livro.titulo">
             <p class="livro-titulo">{{ livro.titulo }}</p>
           </div>
@@ -75,3 +77,37 @@
     </div>
   </div>
 </ion-content>
+
+<ng-template #livroDetalhesModal>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Detalhes do Livro</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="fecharModal()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding" *ngIf="livroSelecionado">
+    <div class="livro-detalhes">
+      <img [src]="livroSelecionado.capa" class="capa-detalhe" [alt]="'Capa de ' + livroSelecionado.titulo">
+      <h2>{{ livroSelecionado.titulo }}</h2>
+      <p class="autor">{{ livroSelecionado.autor }}</p>
+      <p class="ano" *ngIf="livroSelecionado.ano">Publicado em: {{ livroSelecionado.ano }}</p>
+      <p class="descricao">{{ livroSelecionado.descricao || 'Descrição não disponível' }}</p>
+      
+      <div class="botoes-acoes">
+        <ion-button expand="block" color="primary" (click)="lerESair(livroSelecionado)">
+          <ion-icon name="book-outline" slot="start"></ion-icon>
+          Ler
+        </ion-button>
+        <ion-button expand="block" fill="outline" (click)="salvarESair(livroSelecionado)">
+          <ion-icon name="bookmark-outline" slot="start"></ion-icon>
+          Salvar
+        </ion-button>
+      </div>
+    </div>
+  </ion-content>
+</ng-template>

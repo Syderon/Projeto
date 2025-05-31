@@ -52,7 +52,7 @@ body.dark {
   --ion-color-primary-tint: #035fb0;
 
   --ion-item-background: #21212100;
-  --ion-toolbar-background: linear-gradient(to bottom, #dddddd, #d0d0d0, #005cb3); /* Gradiente de preto claro para cinza claro na toolbar */
+  --ion-toolbar-background: linear-gradient(to bottom, #dddddd, #d0d0d0, #4b4b4b); /* Gradiente de preto claro para cinza claro na toolbar */
   --ion-card-background: #15151500;
   
 }
@@ -117,4 +117,60 @@ ion-menu ion-item:hover ion-icon {
 
 body.dark ion-icon {
   color: #005eff  ; /* ou qualquer outra cor que fique visível */
+}
+/* src/global.scss */
+
+.avatar-modal-card {
+  --width: 90%; /* Largura do modal */
+  --max-width: 500px; /* Largura máxima em telas grandes */
+  --height: auto; /* Altura automática conforme o conteúdo */
+  --border-radius: 15px; /* Cantos arredondados */
+  --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Sombra para destacá-lo */
+
+  // Para centralizar o modal no Ionic 5
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0; /* Remove padding padrão do modal para maior controle */
+}
+
+/* Estilo para o conteúdo dentro do modal para garantir que respeite o border-radius */
+.avatar-modal-card .ion-page {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+/* Se você quer remover o header padrão do modal (geralmente ele tem um header próprio no .html) */
+.avatar-modal-card .ion-header {
+    display: none; // Opcional, se você estiver colocando o header diretamente no HTML do modal
+}
+.auto-height {
+  --height: auto;
+  .modal-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+.book-details-modal {
+  --width: 90%;
+  --max-width: 600px;
+  --height: auto;
+  --border-radius: 16px;
+  --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+  ion-backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-wrapper {
+    overflow: hidden;
+  }
 }

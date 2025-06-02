@@ -10,15 +10,43 @@
 <ion-content [fullscreen]="true" [class.dark]="isDarkMode" #content>
   <div class="content-wrapper">
 
+    <!-- Seção: Destaques -->
     <div class="section-title">
-      <h2>Livros de Ação</h2>
+      <h2>Destaques</h2>
       <div class="divider-line"></div>
     </div>
-
     <ion-slides [options]="slideOpts">
-      <ion-slide *ngFor="let livro of livrosAcao">
+      <ion-slide *ngFor="let livro of livrosAcaoDestaque">
         <div class="livro-card" (click)="lerLivro(livro)">
-          <img [src]="livro.capa" class="livro-capa" [alt]="'Capa do livro: ' + livro.titulo">
+          <img [src]="livro.capa" class="livro-capa" [alt]="livro.titulo">
+          <p class="livro-titulo">{{ livro.titulo }}</p>
+        </div>
+      </ion-slide>
+    </ion-slides>
+
+    <!-- Seção: Mais Lidos -->
+    <div class="section-title">
+      <h2>Mais Lidos</h2>
+      <div class="divider-line"></div>
+    </div>
+    <ion-slides [options]="slideOpts">
+      <ion-slide *ngFor="let livro of livrosAcaoMaisLidos">
+        <div class="livro-card" (click)="lerLivro(livro)">
+          <img [src]="livro.capa" class="livro-capa" [alt]="livro.titulo">
+          <p class="livro-titulo">{{ livro.titulo }}</p>
+        </div>
+      </ion-slide>
+    </ion-slides>
+
+    <!-- Seção: Adicionados Recentemente -->
+    <div class="section-title">
+      <h2>Adicionados Recentemente</h2>
+      <div class="divider-line"></div>
+    </div>
+    <ion-slides [options]="slideOpts">
+      <ion-slide *ngFor="let livro of livrosAcaoRecemADD">
+        <div class="livro-card" (click)="lerLivro(livro)">
+          <img [src]="livro.capa" class="livro-capa" [alt]="livro.titulo">
           <p class="livro-titulo">{{ livro.titulo }}</p>
         </div>
       </ion-slide>

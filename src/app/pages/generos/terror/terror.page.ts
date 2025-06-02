@@ -14,19 +14,49 @@ export class TerrorPage {
     freeMode: true
   };
 
-  livrosTerror = [
+  public livrosTerrorDestaque = [
     {
       titulo: 'O Iluminado',
-      capa: 'assets/livros/terror1.jpg'
+      capa: 'assets/livros/terror1.jpg',
+      id: 'terror1',
+      autor: 'Stephen King',
+      ano: 1977,
+      descricao: 'Clássico do terror sobre um hotel mal-assombrado e a loucura que consome seus habitantes.'
     },
     {
       titulo: 'It: A Coisa',
-      capa: 'assets/livros/terror2.jpg'
+      capa: 'assets/livros/terror2.jpg',
+      id: 'terror2',
+      autor: 'Stephen King',
+      ano: 1986,
+      descricao: 'Um grupo de crianças enfrenta uma entidade maligna que se alimenta de seus medos.'
     }
-    // Adicione mais livros de terror conforme desejar
+  ];
+
+  public livrosTerrorMaisLidos = [
+    {
+      titulo: 'O Exorcista',
+      capa: 'assets/livros/terror3.jpg',
+      id: 'terror3',
+      autor: 'William Peter Blatty',
+      ano: 1971,
+      descricao: 'Aterrorizante história de possessão demoníaca que se tornou um marco do gênero.'
+    }
+  ];
+
+  public livrosTerrorRecemADD = [
+    {
+      titulo: 'Coraline',
+      capa: 'assets/livros/terror4.jpg',
+      id: 'terror4',
+      autor: 'Neil Gaiman',
+      ano: 2002,
+      descricao: 'Conto sombrio sobre uma menina que descobre uma versão alternativa e assustadora de sua família.'
+    }
   ];
 
   lerLivro(livro: any) {
     console.log('Abrindo livro:', livro.titulo);
+    // Adicione aqui a navegação para a página de leitura
   }
 }

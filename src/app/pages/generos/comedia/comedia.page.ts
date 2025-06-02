@@ -14,16 +14,77 @@ export class ComediaPage {
     freeMode: true
   };
 
-  livrosComedia = [
+  public livrosComediaDestaque = [
     {
-      titulo: 'O Guia do Mochileiro das Galáxias',
-      capa: 'assets/livros/comedia1.jpg'
+      titulo: 'O Alienista',
+      capa: 'assets/livros/comedia1.jpg',
+      id: 'comedia1',
+      autor: 'Machado de Assis',
+      ano: 1882,
+      descricao: 'Sátira sobre a loucura e a ciência no Brasil Imperial.'
+    },
+    {
+      titulo: 'As Memórias de um Fusca',
+      capa: 'assets/livros/comedia2.jpg',
+      id: 'comedia2',
+      autor: 'Pedro Bandeira',
+      ano: 1985,
+      descricao: 'História hilária de um fusca que ganha vida.'
     },
     {
       titulo: 'Diário de um Banana',
-      capa: 'assets/livros/comedia2.jpg'
+      capa: 'assets/livros/comedia4.jpg',
+      id: 'comedia4',
+      autor: 'Jeff Kinney',
+      ano: 2007,
+      descricao: 'As desventuras cômicas de um adolescente desastrado.'
     }
-    // Adicione mais livros conforme desejar
+  ];
+
+  public livrosComediaMaisLidos = [
+    {
+      titulo: 'A Arte de Fazer Inimigos',
+      capa: 'assets/livros/comedia3.jpg',
+      id: 'comedia3',
+      autor: 'Oscar Wilde',
+      ano: 1890,
+      descricao: 'Máximas afiadas sobre a sociedade hipócrita.'
+    },
+        {
+      titulo: 'Diário de um Banana',
+      capa: 'assets/livros/comedia4.jpg',
+      id: 'comedia4',
+      autor: 'Jeff Kinney',
+      ano: 2007,
+      descricao: 'As desventuras cômicas de um adolescente desastrado.'
+    }
+  ];
+
+  public livrosComediaRecemADD = [
+    {
+      titulo: 'Diário de um Banana',
+      capa: 'assets/livros/comedia4.jpg',
+      id: 'comedia4',
+      autor: 'Jeff Kinney',
+      ano: 2007,
+      descricao: 'As desventuras cômicas de um adolescente desastrado.'
+    },
+    {
+      titulo: 'A Arte de Fazer Inimigos',
+      capa: 'assets/livros/comedia3.jpg',
+      id: 'comedia3',
+      autor: 'Oscar Wilde',
+      ano: 1890,
+      descricao: 'Máximas afiadas sobre a sociedade hipócrita.'
+    },
+    {
+      titulo: 'O Alienista',
+      capa: 'assets/livros/comedia1.jpg',
+      id: 'comedia1',
+      autor: 'Machado de Assis',
+      ano: 1882,
+      descricao: 'Sátira sobre a loucura e a ciência no Brasil Imperial.'
+    }
   ];
 
   lerLivro(livro: any) {

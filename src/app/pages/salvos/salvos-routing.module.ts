@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { SalvosComponent } from './salvos.component';
+import { Routes, RouterModule } from '@angular/router';
+import { SalvosPage } from './salvos.page';  // Caminho correto
 
 const routes: Routes = [
   {
     path: '',
-    component: SalvosComponent
+    component: SalvosPage  // O componente correto para esta página
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SalvosRoutingModule { }
+export class SalvosPageRoutingModule {}

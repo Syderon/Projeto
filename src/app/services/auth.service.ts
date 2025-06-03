@@ -7,6 +7,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
+  getCurrentUser() {
+    throw new Error('Method not implemented.');
+  }
   private userSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   public user: Observable<any> = this.userSubject.asObservable();
 

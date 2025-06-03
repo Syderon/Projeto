@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'salvos',
-    loadChildren: () => import('./pages/salvos/salvos.module').then(m => m.SalvosModule)
+    loadChildren: () => import('./pages/salvos/salvos.module').then(m => m.SalvosPageModule)  // Rota correta para a página 'salvos'
   },
   {
     path: 'recentes',

@@ -18,41 +18,36 @@ export class AcaoPage {
 
 
     {
-      titulo: 'Mundo em Ruínas',
-      capa: "",
+      titulo: 'Agente Oculto',
       autor: 'Mark Greaney',
+      capa: "assets/capas/Agente-Oculto.jpg",
       ano: 2023,
       descricao: 'O mais recente thriller de ação com o Agente Gray Man, repleto de perseguições e intrigas internacionais.'
     },
     {
       titulo: 'Inferno',
       autor: 'Dan Brown',
+      capa: "assets/capas/inferno.webp",
       ano: 2013,
       descricao: 'Robert Langdon mergulha em um mistério sombrio ligado à Divina Comédia de Dante, com o destino do mundo em jogo.'
     },
     {
-      titulo: 'O Resgate',
+      titulo: 'O Sexto Homem',
       autor: 'David Baldacci',
+      capa: "assets/capas/O-Sexto-Homem.webp",
       ano: 2012,
       descricao: 'Um ex-agente de elite busca a filha desaparecida de um amigo, desvendando uma teia de corrupção e perigo.'
     },
     {
       titulo: 'Ponto de Impacto',
-      autor: 'Matthew Reilly',
+      autor: 'Dan Brown',
+      capa: 'assets/capas/Ponto-de-Impacto.webp',
       ano: 2007,
       descricao: 'Uma arqueóloga é arrastada para uma corrida contra o tempo para evitar uma catástrofe global desencadeada por uma antiga descoberta.'
     }
   ];
 
   public livrosAcaoMaisLidos = [
-    {
-      titulo: 'O Pequeno Príncipe',
-      capa: 'assets/capas/destaque2.jpg',
-
-      autor: 'Antoine de Saint-Exupéry',
-      ano: 1943,
-      descricao: 'Uma obra poética e filosófica que aborda temas como amor, amizade e o sentido da vida.'
-    },
     {
       titulo: 'Mundo em Ruínas',
       capa: "",
@@ -81,14 +76,6 @@ export class AcaoPage {
   ];
 
   public livrosAcaoRecemADD = [
-    {
-      titulo: 'O Pequeno Príncipe',
-      capa: 'assets/capas/destaque2.jpg',
-      id: 'destaque2',
-      autor: 'Antoine de Saint-Exupéry',
-      ano: 1943,
-      descricao: 'Uma obra poética e filosófica que aborda temas como amor, amizade e o sentido da vida.'
-    },
     {
       titulo: 'Mundo em Ruínas',
       capa: "",

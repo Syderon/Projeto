@@ -18,12 +18,8 @@ import { BookDetailsModalComponent } from './components/book-details-modal/book-
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPage,
-    BookDetailsModalComponent,
-    [BookDetailsModalComponent],
+    LoginPage],
     
-    
-  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

@@ -1,0 +1,67 @@
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button> <!-- Botão de Menu -->
+        </ion-buttons>
+        <ion-title>Minha Biblioteca</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+
+<ion-content [fullscreen]="true" [class.dark]="isDarkMode">
+  <!-- Barra de pesquisa otimizada -->
+  <div class="search-container ion-padding">
+    <ion-searchbar
+      #searchBar
+      placeholder="Buscar..."
+      (ionInput)="buscarLivroSalvo($event)"
+      (ionClear)="limparBusca()"
+      showClearButton="always">
+    </ion-searchbar>
+  </div>
+
+  <!-- Lista de livros com skeleton loading -->
+  <ng-container *ngIf="livrosSalvos.length > 0">
+    <!-- Resultados da busca -->
+    <ion-list *ngIf="livrosFiltrados.length > 0" lines="full">
+      <ion-item *ngFor="let livro of livrosFiltrados" detail="false">
+        <ion-thumbnail slot="start" class="livro-thumbnail">
+          <img [src]="livro.capa || 'assets/images/capa-default.png'" 
+               [alt]="'Capa: ' + livro.titulo"
+               (error)="livro.capa = 'assets/images/capa-default.png'">
+        </ion-thumbnail>
+        
+        <ion-label class="livro-info">
+          <h2>{{ livro.titulo }}</h2>
+          <p class="autor">{{ livro.autor || 'Autor não informado' }}</p>
+          <p class="meta" *ngIf="livro.ano">{{ livro.ano }} • {{ livro.genero || '' }}</p>
+        </ion-label>
+
+        <ion-button slot="end" fill="clear" color="danger" (click)="removerLivro(livro)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+
+    <!-- Sem resultados para busca -->
+    <div *ngIf="termoBusca && livrosFiltrados.length === 0" class="empty-state ion-padding">
+      <ion-icon name="search-outline" color="medium"></ion-icon>
+      <h3>Nada encontrado</h3>
+      <p>Nenhum livro corresponde a "{{ termoBusca }}"</p>
+      <ion-button fill="clear" (click)="limparBusca()">
+        <ion-icon name="close-circle" slot="start"></ion-icon>
+        Limpar
+      </ion-button>
+    </div>
+  </ng-container>
+
+  <!-- Biblioteca vazia -->
+  <div *ngIf="livrosSalvos.length === 0" class="empty-state ion-padding">
+    <ion-icon name="bookmarks-outline" color="medium"></ion-icon>
+    <h3>Sua biblioteca está vazia</h3>
+    <p>Os livros que você salvar aparecerão aqui</p>
+    <ion-button fill="outline" routerLink="/home">
+      Explorar livros
+    </ion-button>
+  </div>
+</ion-content>

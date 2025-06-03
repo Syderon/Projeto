@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';  // Certifique-se de importar o IonicModule
-import { SalvosRoutingModule } from './salvos-routing.module';
-import { SalvosComponent } from './salvos.component';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+
+import { SalvosPage } from './salvos.page';  // Certifique-se de que o caminho está correto
+import { SalvosPageRoutingModule } from './salvos-routing.module';
 
 @NgModule({
-  declarations: [SalvosComponent],
   imports: [
     CommonModule,
-    IonicModule,  // Adicione o IonicModule aqui
-    SalvosRoutingModule
-  ]
+    FormsModule,
+    IonicModule,
+    SalvosPageRoutingModule
+  ],
+  declarations: [SalvosPage]  // O componente deve ser listado aqui
 })
-export class SalvosModule { }
+export class SalvosPageModule {}

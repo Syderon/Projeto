@@ -14,7 +14,15 @@
   --highlight-light: #6200ee;
   --highlight-hover-light: #5600d4;
   --highlight-rgb: 98, 0, 238; /* ADICIONADO (para o hover dos cards e blur) */
-
+  :host {
+  /* Adicione essas novas variáveis */
+  --grid-line-opacity-light: 0.03;
+  --grid-line-opacity-dark: 0.05;
+  --grid-size: 25px;
+  
+  /* Mantenha o restante das suas variáveis existentes */
+  /* ... */
+}
   /* Cores do Modo Escuro */
   // Para que o blur funcione bem, é melhor ter uma cor sólida (ou quase sólida) para o background que será desfocado,
   // em vez de um gradiente que pode não ter o mesmo efeito visual com o blur.
@@ -462,4 +470,61 @@ ion-modal {
     100% {
         left: 100%;
     }
+}
+.modern-title {
+  will-change: transform, background-position, text-shadow;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  
+  &::before {
+    will-change: opacity, filter;
+  }
+}
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0;
+  padding: 0 12px 8px 0;
+  color: var(--text-color-primary);
+  font-family: 'Trattatello', 'fantasy';
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  position:relative ;
+  
+  &:hover::before {
+    width: 100%;
+  }
+  
+}
+// Adicione isso no final do seu arquivo SCSS
+ion-content {
+  position: relative;
+  
+  // Efeito de rede
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: 0;
+    pointer-events: none;
+    
+    .dark & {
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    }
+  }
+  
+  // Garante que todo conteúdo fique acima do background
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 }

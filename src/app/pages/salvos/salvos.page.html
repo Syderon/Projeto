@@ -10,15 +10,6 @@
 
 <ion-content [fullscreen]="true" [class.dark]="isDarkMode">
   <!-- Barra de pesquisa otimizada -->
-  <div class="search-container ion-padding">
-    <ion-searchbar
-      #searchBar
-      placeholder="Buscar..."
-      (ionInput)="buscarLivroSalvo($event)"
-      (ionClear)="limparBusca()"
-      showClearButton="always">
-    </ion-searchbar>
-  </div>
 
   <!-- Lista de livros com skeleton loading -->
   <ng-container *ngIf="livrosSalvos.length > 0">

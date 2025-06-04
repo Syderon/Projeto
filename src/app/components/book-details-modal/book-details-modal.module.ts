@@ -9,3 +9,4 @@ import { BookDetailsModalComponent } from './book-details-modal.component';
   exports: [BookDetailsModalComponent]
 })
 export class BookDetailsModalModule {}
+

@@ -1,21 +1,24 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title class="ion-text-center">{{ book?.titulo }}</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="dismiss()">
-        <ion-icon name="close" slot="icon-only"></ion-icon>
+<ion-content class="ion-padding">
+
+
+  <div class="book-detail-card">
+    <ion-buttons class="close-button-container">
+      <ion-button (click)="dismiss()" color="dark">
+        <ion-icon name="close-circle-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="ion-padding">
-  <div class="book-detail-card">
     <div class="book-cover-wrapper">
       <img [src]="book?.capa" [alt]="'Capa do livro ' + book?.titulo" class="book-cover">
     </div>
 
     <div class="book-info">
+      <ion-item class="info-item">
+        <ion-label>
+          <p class="label-title">Título</p>
+          <h3 class="info-text">{{ book?.titulo || 'Não informado' }}</h3>
+        </ion-label>
+      </ion-item>
+
       <ion-item class="info-item">
         <ion-label>
           <p class="label-title">Autor</p>
@@ -37,22 +40,22 @@
         </ion-label>
       </ion-item>
     </div>
-  </div>
-</ion-content>
 
-<ion-footer>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button expand="block" (click)="salvarLivro()">
-        <ion-icon name="bookmark-outline" slot="start"></ion-icon>
+    <div class="book-actions">
+      <ion-buttons slot="start" class="action-button-group">
+        <ion-button expand="block" (click)="salvarLivro()">
+          <ion-icon name="bookmark-outline" slot="start"></ion-icon>
           Salvar
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button color="primary" (click)="lerLivro()" expand="block">
-        <ion-icon name="book" slot="start"></ion-icon>
-        Ler
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-footer>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end" class="action-button-group">
+        <ion-button (click)="lerLivro()">
+          <ion-icon name="book" slot="start"></ion-icon>
+          Ler
+        </ion-button>
+
+
+      </ion-buttons>
+    </div>
+
+  </div>

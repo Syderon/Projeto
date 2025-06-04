@@ -44,6 +44,7 @@ export class HomePage implements OnInit, OnDestroy {
       autor: 'Fiódor Dostoiévski',
       ano: 1864,
       descricao: 'Uma obra que explora a mente de um homem solitário, que vive em isolamento e se questiona sobre a vida, a sociedade e a natureza humana.'
+      
     },
     {
       titulo: 'Crime e Castigo',

@@ -17,7 +17,7 @@ export class FiccaoPage {
   public livrosFiccaoDestaque = [
     {
       titulo: '1984',
-      capa: 'assets/livros/ficcao1.jpg',
+      capa: 'assets/capas/ficcao1.jpg',
       id: 'ficcao1',
       autor: 'George Orwell',
       ano: 1949,
@@ -25,7 +25,7 @@ export class FiccaoPage {
     },
     {
       titulo: 'Admirável Mundo Novo',
-      capa: 'assets/livros/ficcao2.jpg',
+      capa: 'assets/capas/ficcao2.jpg',
       id: 'ficcao2',
       autor: 'Aldous Huxley',
       ano: 1932,
@@ -33,7 +33,7 @@ export class FiccaoPage {
     },
     {
       titulo: 'Fahrenheit 451',
-      capa: 'assets/livros/ficcao3.jpg',
+      capa: 'assets/capas/ficcao3.jpg',
       id: 'ficcao3',
       autor: 'Ray Bradbury',
       ano: 1953,
@@ -44,7 +44,7 @@ export class FiccaoPage {
   public livrosFiccaoMaisLidos = [
     {
       titulo: 'Fahrenheit 451',
-      capa: 'assets/livros/ficcao3.jpg',
+      capa: 'assets/capas/ficcao3.jpg',
       id: 'ficcao3',
       autor: 'Ray Bradbury',
       ano: 1953,
@@ -52,7 +52,7 @@ export class FiccaoPage {
     },    
     {
       titulo: '1984',
-      capa: 'assets/livros/ficcao1.jpg',
+      capa: 'assets/capas/ficcao1.jpg',
       id: 'ficcao1',
       autor: 'George Orwell',
       ano: 1949,
@@ -60,7 +60,7 @@ export class FiccaoPage {
     },
     {
       titulo: 'Admirável Mundo Novo',
-      capa: 'assets/livros/ficcao2.jpg',
+      capa: 'assets/capas/ficcao2.jpg',
       id: 'ficcao2',
       autor: 'Aldous Huxley',
       ano: 1932,
@@ -71,7 +71,7 @@ export class FiccaoPage {
   public livrosFiccaoRecemADD = [
     {
       titulo: 'O Conto da Aia',
-      capa: 'assets/livros/ficcao4.jpg',
+      capa: 'assets/capas/livro13.png',
       id: 'ficcao4',
       autor: 'Margaret Atwood',
       ano: 1985,
@@ -79,7 +79,7 @@ export class FiccaoPage {
     },
     {
       titulo: 'Fahrenheit 451',
-      capa: 'assets/livros/ficcao3.jpg',
+      capa: 'assets/capas/ficcao3.jpg',
       id: 'ficcao3',
       autor: 'Ray Bradbury',
       ano: 1953,
@@ -87,7 +87,7 @@ export class FiccaoPage {
     },
     {
       titulo: '1984',
-      capa: 'assets/livros/ficcao1.jpg',
+      capa: 'assets/capas/ficcao1.jpg',
       id: 'ficcao1',
       autor: 'George Orwell',
       ano: 1949,
@@ -95,7 +95,7 @@ export class FiccaoPage {
     },
     {
       titulo: 'Admirável Mundo Novo',
-      capa: 'assets/livros/ficcao2.jpg',
+      capa: 'assets/capas/ficcao2.jpg',
       id: 'ficcao2',
       autor: 'Aldous Huxley',
       ano: 1932,

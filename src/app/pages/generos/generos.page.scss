@@ -1,38 +1,28 @@
-.titulo-generos {
-    font-size: 1.5rem;
-    color: #71e5cf;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .card-genero {
-    background-color: orange;
-    border-radius: 12px;
-    height: 150px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-  }
-  
-  .card-genero img {
-    position: absolute;
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-    bottom: 0;
-    right: 0;
-    opacity: 0.9;
-  }
-  
-  .texto-genero {
-    color: #003e3e;
-    font-weight: bold;
-    font-size: 1rem;
-    z-index: 1;
-    text-align: center;
-  }
-  
+.card-genero {
+  width: 100%;
+  height: 150px;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.card-genero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.texto-genero {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  color: #000000; /* Texto preto */
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.7); /* Branco com 70% de opacidade */
+  padding: 4px 8px;
+  border-top-left-radius: 8px;
+  margin: 0; /* Remove todas as margens */
+}

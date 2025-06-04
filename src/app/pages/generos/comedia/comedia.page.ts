@@ -17,7 +17,7 @@ export class ComediaPage {
   public livrosComediaDestaque = [
     {
       titulo: 'O Alienista',
-      capa: 'assets/livros/comedia1.jpg',
+      capa: 'assets/capas/comedia1.jpg',
       id: 'comedia1',
       autor: 'Machado de Assis',
       ano: 1882,
@@ -25,7 +25,7 @@ export class ComediaPage {
     },
     {
       titulo: 'As Memórias de um Fusca',
-      capa: 'assets/livros/comedia2.jpg',
+      capa: 'assets/capas/comedia2.jpg',
       id: 'comedia2',
       autor: 'Pedro Bandeira',
       ano: 1985,
@@ -33,8 +33,8 @@ export class ComediaPage {
     },
     {
       titulo: 'Diário de um Banana',
-      capa: 'assets/livros/comedia4.jpg',
-      id: 'comedia4',
+      capa: 'assets/capas/comedia3.jpg',
+      id: 'comedia3',
       autor: 'Jeff Kinney',
       ano: 2007,
       descricao: 'As desventuras cômicas de um adolescente desastrado.'
@@ -44,16 +44,16 @@ export class ComediaPage {
   public livrosComediaMaisLidos = [
     {
       titulo: 'A Arte de Fazer Inimigos',
-      capa: 'assets/livros/comedia3.jpg',
-      id: 'comedia3',
+      capa: 'assets/capas/comedia4.jpg',
+      id: 'comedia4',
       autor: 'Oscar Wilde',
       ano: 1890,
       descricao: 'Máximas afiadas sobre a sociedade hipócrita.'
     },
         {
       titulo: 'Diário de um Banana',
-      capa: 'assets/livros/comedia4.jpg',
-      id: 'comedia4',
+      capa: 'assets/capas/comedia3.jpg',
+      id: 'comedia3',
       autor: 'Jeff Kinney',
       ano: 2007,
       descricao: 'As desventuras cômicas de um adolescente desastrado.'
@@ -63,23 +63,23 @@ export class ComediaPage {
   public livrosComediaRecemADD = [
     {
       titulo: 'Diário de um Banana',
-      capa: 'assets/livros/comedia4.jpg',
-      id: 'comedia4',
+      capa: 'assets/capas/comedia3.jpg',
+      id: 'comedia3',
       autor: 'Jeff Kinney',
       ano: 2007,
       descricao: 'As desventuras cômicas de um adolescente desastrado.'
     },
     {
       titulo: 'A Arte de Fazer Inimigos',
-      capa: 'assets/livros/comedia3.jpg',
-      id: 'comedia3',
+      capa: 'assets/capas/comedia4.jpg',
+      id: 'comedia4',
       autor: 'Oscar Wilde',
       ano: 1890,
       descricao: 'Máximas afiadas sobre a sociedade hipócrita.'
     },
     {
       titulo: 'O Alienista',
-      capa: 'assets/livros/comedia1.jpg',
+      capa: 'assets/capas/comedia1.jpg',
       id: 'comedia1',
       autor: 'Machado de Assis',
       ano: 1882,

@@ -5,6 +5,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class LivrosService {
+  livroJaSalvo(id: string): boolean {
+    const livrosSalvos = this.carregarLivros();
+    return livrosSalvos.some(l => l.id === id);
+}
+
   private livrosSalvosSubject = new BehaviorSubject<any[]>(this.carregarLivros());
   livrosSalvos$ = this.livrosSalvosSubject.asObservable();
 

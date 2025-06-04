@@ -17,7 +17,7 @@ export class TerrorPage {
   public livrosTerrorDestaque = [
     {
       titulo: 'O Iluminado',
-      capa: 'assets/livros/terror1.jpg',
+      capa: 'assets/capas/terror1.jpg',
       id: 'terror1',
       autor: 'Stephen King',
       ano: 1977,
@@ -25,7 +25,7 @@ export class TerrorPage {
     },
     {
       titulo: 'It: A Coisa',
-      capa: 'assets/livros/terror2.jpg',
+      capa: 'assets/capas/livro15.jpg',
       id: 'terror2',
       autor: 'Stephen King',
       ano: 1986,
@@ -36,7 +36,7 @@ export class TerrorPage {
   public livrosTerrorMaisLidos = [
     {
       titulo: 'O Exorcista',
-      capa: 'assets/livros/terror3.jpg',
+      capa: 'assets/capas/terror3.jpg',
       id: 'terror3',
       autor: 'William Peter Blatty',
       ano: 1971,
@@ -47,7 +47,7 @@ export class TerrorPage {
   public livrosTerrorRecemADD = [
     {
       titulo: 'Coraline',
-      capa: 'assets/livros/terror4.jpg',
+      capa: 'assets/capas/terror4.jpg',
       id: 'terror4',
       autor: 'Neil Gaiman',
       ano: 2002,

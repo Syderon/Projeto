@@ -43,10 +43,17 @@
 <ion-footer>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button expand="block" (click)="salvarLivro()">
-        <ion-icon name="bookmark-outline" slot="start"></ion-icon>
-          Salvar
-      </ion-button>
+   <ion-button
+    expand="block"
+    (click)="salvarLivro()"
+    [disabled]="estaSalvo"
+    [color]="estaSalvo ? 'primary' : 'primary'"> <!-- Mantém como primary em ambos estados -->
+    <ion-icon
+      [name]="estaSalvo ? 'bookmark' : 'bookmark-outline'"
+      slot="start">
+    </ion-icon>
+    {{ estaSalvo ? 'SALVO' : 'SALVAR' }}
+  </ion-button> 
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button color="primary" (click)="lerLivro()" expand="block">

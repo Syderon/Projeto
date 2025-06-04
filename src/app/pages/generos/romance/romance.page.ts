@@ -17,7 +17,7 @@ export class RomancePage {
   public livrosRomanceDestaque = [
     {
       titulo: 'Orgulho e Preconceito',
-      capa: 'assets/livros/romance1.jpg',
+      capa: 'assets/capas/romance1.jpg',
       id: 'romance1',
       autor: 'Jane Austen',
       ano: 1813,
@@ -25,7 +25,7 @@ export class RomancePage {
     },
     {
       titulo: 'Como Eu Era Antes de Você',
-      capa: 'assets/livros/romance2.jpg',
+      capa: 'assets/capas/romance2.jpg',
       id: 'romance2',
       autor: 'Jojo Moyes',
       ano: 2012,
@@ -36,7 +36,7 @@ export class RomancePage {
   public livrosRomanceMaisLidos = [
     {
       titulo: 'A Culpa é das Estrelas',
-      capa: 'assets/livros/romance3.jpg',
+      capa: 'assets/capas/romance3.jpg',
       id: 'romance3',
       autor: 'John Green',
       ano: 2012,
@@ -44,7 +44,7 @@ export class RomancePage {
     },
     {
       titulo: 'Eleanor & Park',
-      capa: 'assets/livros/romance4.jpg',
+      capa: 'assets/capas/romance4.jpg',
       id: 'romance4',
       autor: 'Rainbow Rowell',
       ano: 2013,
@@ -52,7 +52,7 @@ export class RomancePage {
     },
     {
       titulo: 'Orgulho e Preconceito',
-      capa: 'assets/livros/romance1.jpg',
+      capa: 'assets/capas/romance1.jpg',
       id: 'romance1',
       autor: 'Jane Austen',
       ano: 1813,
@@ -60,7 +60,7 @@ export class RomancePage {
     },
     {
       titulo: 'Como Eu Era Antes de Você',
-      capa: 'assets/livros/romance2.jpg',
+      capa: 'assets/capas/romance2.jpg',
       id: 'romance2',
       autor: 'Jojo Moyes',
       ano: 2012,
@@ -71,7 +71,7 @@ export class RomancePage {
   public livrosRomanceRecemADD = [
     {
       titulo: 'Eleanor & Park',
-      capa: 'assets/livros/romance4.jpg',
+      capa: 'assets/capas/romance4.jpg',
       id: 'romance4',
       autor: 'Rainbow Rowell',
       ano: 2013,
@@ -79,7 +79,7 @@ export class RomancePage {
     },
     {
       titulo: 'Orgulho e Preconceito',
-      capa: 'assets/livros/romance1.jpg',
+      capa: 'assets/capas/romance1.jpg',
       id: 'romance1',
       autor: 'Jane Austen',
       ano: 1813,
@@ -87,7 +87,7 @@ export class RomancePage {
     },
     {
       titulo: 'Como Eu Era Antes de Você',
-      capa: 'assets/livros/romance2.jpg',
+      capa: 'assets/capas/romance2.jpg',
       id: 'romance2',
       autor: 'Jojo Moyes',
       ano: 2012,
@@ -95,7 +95,7 @@ export class RomancePage {
     },
     {
       titulo: 'A Culpa é das Estrelas',
-      capa: 'assets/livros/romance3.jpg',
+      capa: 'assets/capas/romance3.jpg',
       id: 'romance3',
       autor: 'John Green',
       ano: 2012,

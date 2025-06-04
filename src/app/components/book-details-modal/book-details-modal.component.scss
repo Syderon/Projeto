@@ -197,4 +197,21 @@ ion-content.ion-padding {
   background: transparent !important;
   box-shadow: none !important;
 }
- 
+
+/* Adicione isso no seu arquivo SCSS */
+ion-button[disabled] {
+  --background: var(--ion-color-primary);
+  --color: #3880ff; /* Cor personalizada para o texto */
+  opacity: 1;
+
+  ion-icon {
+    color: #3880ff; /* Cor personalizada para o ícone */
+  }
+}
+
+// Adicione esta parte para garantir que o botão de sucesso tenha boa aparência
+ion-button[color="success"] {
+  --background: var(--ion-color-success);
+  --background-activated: var(--ion-color-success-shade);
+  --color: white;
+}

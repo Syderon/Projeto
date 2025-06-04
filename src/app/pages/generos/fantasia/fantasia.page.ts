@@ -17,7 +17,7 @@ export class FantasiaPage {
   public livrosFantasiaDestaque = [
     {
       titulo: 'O Senhor dos Anéis',
-      capa: 'assets/livros/fantasia1.jpg',
+      capa: 'assets/capas/livro2.jpg',
       id: 'fantasia1',
       autor: 'J.R.R. Tolkien',
       ano: 1954,
@@ -25,7 +25,7 @@ export class FantasiaPage {
     },
     {
       titulo: 'Harry Potter e a Pedra Filosofal',
-      capa: 'assets/livros/fantasia2.jpg',
+      capa: 'assets/capas/fantasia2.jpg',
       id: 'fantasia2',
       autor: 'J.K. Rowling',
       ano: 1997,
@@ -33,7 +33,7 @@ export class FantasiaPage {
     },
     {
       titulo: 'As Crônicas de Nárnia',
-      capa: 'assets/livros/fantasia3.jpg',
+      capa: 'assets/capas/fantasia3.jpg',
       id: 'fantasia3',
       autor: 'C.S. Lewis',
       ano: 1950,
@@ -44,7 +44,7 @@ export class FantasiaPage {
   public livrosFantasiaMaisLidos = [
     {
       titulo: 'As Crônicas de Nárnia',
-      capa: 'assets/livros/fantasia3.jpg',
+      capa: 'assets/capas/fantasia3.jpg',
       id: 'fantasia3',
       autor: 'C.S. Lewis',
       ano: 1950,
@@ -52,7 +52,7 @@ export class FantasiaPage {
     },
     {
       titulo: 'O Senhor dos Anéis',
-      capa: 'assets/livros/fantasia1.jpg',
+      capa: 'assets/capas/livro2.jpg',
       id: 'fantasia1',
       autor: 'J.R.R. Tolkien',
       ano: 1954,
@@ -60,7 +60,7 @@ export class FantasiaPage {
     },
     {
       titulo: 'Harry Potter e a Pedra Filosofal',
-      capa: 'assets/livros/fantasia2.jpg',
+      capa: 'assets/capas/fantasia2.jpg',
       id: 'fantasia2',
       autor: 'J.K. Rowling',
       ano: 1997,
@@ -71,7 +71,7 @@ export class FantasiaPage {
   public livrosFantasiaRecemADD = [
     {
       titulo: 'O Nome do Vento',
-      capa: 'assets/livros/fantasia4.jpg',
+      capa: 'assets/capas/fantasia4.jpg',
       id: 'fantasia4',
       autor: 'Patrick Rothfuss',
       ano: 2007,

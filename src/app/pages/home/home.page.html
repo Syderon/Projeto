@@ -98,16 +98,6 @@
       <p class="ano" *ngIf="livroSelecionado.ano">Publicado em: {{ livroSelecionado.ano }}</p>
       <p class="descricao">{{ livroSelecionado.descricao || 'Descrição não disponível' }}</p>
       
-      <div class="botoes-acoes">
-        <ion-button expand="block" color="primary" (click)="lerESair(livroSelecionado)">
-          <ion-icon name="book-outline" slot="start"></ion-icon>
-          Ler
-        </ion-button>
-        <ion-button expand="block" fill="outline" (click)="salvarESair(livroSelecionado)">
-          <ion-icon name="bookmark-outline" slot="start"></ion-icon>
-          Salvar
-        </ion-button>
-      </div>
     </div>
   </ion-content>
 </ng-template>

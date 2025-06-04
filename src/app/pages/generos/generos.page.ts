@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
 export class GenerosPage implements OnInit {
 
   generos = [
-    { nome: 'Fantasia', imagem: 'assets/imgs/fantasia.png' },
-    { nome: 'Romance', imagem: 'assets/imgs/romance.png' },
-    { nome: 'Terror', imagem: 'assets/imgs/terror.png' },
-    { nome: 'Aventura', imagem: 'assets/imgs/aventura.png' },
-    { nome: 'Suspense', imagem: 'assets/imgs/suspense.png' },
-    { nome: 'Ficção', imagem: 'assets/imgs/ficcao.png' },
-    { nome: 'Ação', imagem: 'assets/imgs/acao.png' },
-    { nome: 'Comédia', imagem: 'assets/imgs/comedia.png' }
+    { nome: 'Fantasia', imagem: 'assets/generos/fantasia.jpeg' },
+    { nome: 'Romance', imagem: 'assets/generos/romance.jpeg' },
+    { nome: 'Terror', imagem: 'assets/generos/terror.jpeg' },
+    { nome: 'Aventura', imagem: 'assets/generos/aventura.jpeg' },
+    { nome: 'Suspense', imagem: 'assets/generos/suspense.jpeg' },
+    { nome: 'Ficção', imagem: 'assets/generos/ficcao.jpeg' },
+    { nome: 'Ação', imagem: 'assets/generos/acao.jpeg' },
+    { nome: 'Comédia', imagem: 'assets/generos/comedia.jpeg' }
   ];
 
   constructor(private router: Router) { }

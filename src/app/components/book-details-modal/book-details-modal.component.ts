@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { LivrosService } from '../../services/livros.service'; 
 import { NavController } from '@ionic/angular';
@@ -9,8 +9,9 @@ import { NavController } from '@ionic/angular';
   templateUrl: './book-details-modal.component.html',
   styleUrls: ['./book-details-modal.component.scss'],
 })
-export class BookDetailsModalComponent {
+export class BookDetailsModalComponent implements OnInit {
   @Input() book: any;
+  estaSalvo: boolean = false;
 
   constructor(
     private modalController: ModalController,
@@ -18,6 +19,21 @@ export class BookDetailsModalComponent {
     private livrosService: LivrosService,
     private navCtrl: NavController
   ) {}
+
+  ngOnInit() {
+    this.verificarSeEstaSalvo();
+    console.log('Livro recebido:', this.book);
+  }
+
+  async verificarSeEstaSalvo() {
+  try {
+    this.estaSalvo = this.livrosService.livroJaSalvo(this.book.id);
+    console.log('Está salvo?', this.estaSalvo);
+  } catch (error) {
+    console.error('Erro ao verificar se livro está salvo:', error);
+    this.estaSalvo = false;
+  }
+}
 
   dismiss() {
     this.modalController.dismiss();

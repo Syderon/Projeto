@@ -17,7 +17,7 @@ export class SuspensePage {
   public livrosSuspenseDestaque = [
     {
       titulo: 'Garota Exemplar',
-      capa: 'assets/livros/suspense1.jpg',
+      capa: 'assets/capas/suspense1.jpg',
       id: 'suspense1',
       autor: 'Gillian Flynn',
       ano: 2012,
@@ -25,7 +25,7 @@ export class SuspensePage {
     },
     {
       titulo: 'O Silêncio dos Inocentes',
-      capa: 'assets/livros/suspense2.jpg',
+      capa: 'assets/capas/suspense2.jpg',
       id: 'suspense2',
       autor: 'Thomas Harris',
       ano: 1988,
@@ -36,7 +36,7 @@ export class SuspensePage {
   public livrosSuspenseMaisLidos = [
     {
       titulo: 'A Paciente Silenciosa',
-      capa: 'assets/livros/suspense3.jpg',
+      capa: 'assets/capas/suspense3.jpg',
       id: 'suspense3',
       autor: 'Alex Michaelides',
       ano: 2019,
@@ -47,7 +47,7 @@ export class SuspensePage {
   public livrosSuspenseRecemADD = [
     {
       titulo: 'O Homem de Giz',
-      capa: 'assets/livros/suspense4.jpg',
+      capa: 'assets/capas/O-Homem-de-Giz.jpg',
       id: 'suspense4',
       autor: 'C.J. Tudor',
       ano: 2018,
@@ -55,7 +55,7 @@ export class SuspensePage {
     },
     {
       titulo: 'A Paciente Silenciosa',
-      capa: 'assets/livros/suspense3.jpg',
+      capa: 'assets/capas/suspense3.jpg',
       id: 'suspense3',
       autor: 'Alex Michaelides',
       ano: 2019,

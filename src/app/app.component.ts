@@ -1,7 +1,11 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Platform, LoadingController } from '@ionic/angular';
 import { AuthService } from './services/auth.service';
 import { Observable } from 'rxjs';
+import { slideInAnimation, fadeAnimation, zoomAnimation, flipAnimation, slideUpAnimation, blurAnimation,
+  rotateAnimation, scaleBounceAnimation, slideRightAnimation, skewAnimation, flipHorizontalAnimation, 
+zoomOutAnimation } from './animations';
+
 
 @Component({
   selector: 'app-root',
@@ -15,11 +19,14 @@ export class AppComponent implements OnInit {
   isDarkMode: boolean = false;
   user$: Observable<any> = this.authService.user;
   menuOpen = false;
+  customAnimation = blurAnimation;
+  
 
   constructor(
-    private platform: Platform, 
+    private platform: Platform,
     private authService: AuthService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private loadingController: LoadingController
   ) {
     this.initializeApp();
   }
@@ -45,11 +52,20 @@ export class AppComponent implements OnInit {
     return null;
   }
 
-  initializeApp() {
+  async initializeApp() {
+    const loading = await this.loadingController.create({
+      message: 'Carregando...',
+      spinner: 'crescent'
+    });
+
+    await loading.present();
+
     this.platform.ready().then(() => {
       const darkMode = localStorage.getItem('darkMode');
       this.isDarkMode = darkMode === 'true';
       this.setDarkMode(this.isDarkMode);
+
+      loading.dismiss();
     });
   }
 
@@ -57,8 +73,7 @@ export class AppComponent implements OnInit {
     this.isDarkMode = !this.isDarkMode;
     localStorage.setItem('darkMode', this.isDarkMode.toString());
     this.setDarkMode(this.isDarkMode);
-    
-    // Remove a classe de container escuro se existir
+
     const container = document.querySelector('.menu-container');
     if (container) {
       this.renderer.removeClass(container, 'dark-container');
@@ -78,7 +93,6 @@ export class AppComponent implements OnInit {
     }
   }
 
-  // Novo efeito de abertura do menu
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
     const menu = document.querySelector('ion-menu');
@@ -93,3 +107,25 @@ export class AppComponent implements OnInit {
     }
   }
 }
+import { createAnimation } from '@ionic/angular';
+
+export const slideLeftAnimation = (_: HTMLElement, opts: any) => {
+  const enteringEl = opts.enteringEl;
+  const leavingEl = opts.leavingEl;
+
+  const enteringAnimation = createAnimation()
+    .addElement(enteringEl)
+    .duration(400)
+    .easing('ease-in-out')
+    .fromTo('transform', 'translateX(100%)', 'translateX(0)')
+    .fromTo('opacity', '0', '1');
+
+  const leavingAnimation = createAnimation()
+    .addElement(leavingEl)
+    .duration(400)
+    .easing('ease-in-out')
+    .fromTo('transform', 'translateX(0)', 'translateX(-100%)')
+    .fromTo('opacity', '1', '0');
+
+  return createAnimation().addAnimation([enteringAnimation, leavingAnimation]);
+};

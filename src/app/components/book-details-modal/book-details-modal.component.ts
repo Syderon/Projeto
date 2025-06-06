@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { LivrosService } from '../../services/livros.service'; 
 import { NavController } from '@ionic/angular';
+import { AnimationController } from '@ionic/angular';
 
 
 @Component({
@@ -17,7 +18,9 @@ export class BookDetailsModalComponent implements OnInit {
     private modalController: ModalController,
     private toastController: ToastController,
     private livrosService: LivrosService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private animationCtrl: AnimationController
+
   ) {}
 
   ngOnInit() {

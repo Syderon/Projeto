@@ -3,7 +3,8 @@
   flex-direction: column;
   align-items: center;
   padding: 20px 0;
-  animation: fadeIn 0.5s ease;
+  /* Mantido: animation: fadeIn 0.5s ease; */
+  /* Se quiser remover o fadeIn na carga, remova a linha acima */
 }
 
 .perfil-container ion-avatar {
@@ -14,33 +15,28 @@
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.986);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-  animation: pulseNeon 2s infinite;
+  /* Removido: animation: pulseNeon 2s infinite; para eliminar o efeito de brilho/pulso */
 }
 
 .dark .perfil-container ion-avatar {
   border: 3px solid rgba(0, 21, 255, 0.8);
   box-shadow: 0 0 20px rgba(0, 42, 255, 0.8);
-  animation: pulseNeonDark 2s infinite;
+  /* Removido: animation: pulseNeonDark 2s infinite; para eliminar o efeito de brilho/pulso azulado */
 }
 
 .perfil-info h2, .perfil-info p {
   text-align: center;
-  opacity: 0;
-  animation: fadeSlideIn 0.5s ease forwards;
+  /* opacity: 0; */ /* Removido para que o texto não comece invisível sem animação */
+  /* animation: fadeSlideIn 0.5s ease forwards; */ /* Removido para eliminar o efeito de aparecer/deslizar */
+  opacity: 1; /* Garante que o texto esteja visível por padrão */
+  transform: translateY(0); /* Garante que o texto esteja na posição padrão */
 }
 
-@keyframes pulseNeon {
-  0% { box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); }
-  50% { box-shadow: 0 0 20px rgb(0, 0, 0); }
-  100% { box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); }
-}
+/* Removido as keyframes pulseNeon e pulseNeonDark, pois não são mais usadas */
+/* @keyframes pulseNeon { ... } */
+/* @keyframes pulseNeonDark { ... } */
 
-@keyframes pulseNeonDark {
-  0% { box-shadow: 0 0 10px rgba(138, 43, 226, 0.6); }
-  50% { box-shadow: 0 0 20px rgba(138, 43, 226, 1); }
-  100% { box-shadow: 0 0 10px rgba(138, 43, 226, 0.6); }
-}
-
+/* Mantido @keyframes fadeIn e fadeSlideIn caso você queira reativá-los ou eles sejam usados em outro lugar */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -50,6 +46,7 @@
   0% { opacity: 0; transform: translateY(10px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+
 
 ion-menu {
   --width: 280px;
@@ -67,6 +64,18 @@ ion-menu {
     --background: transparent;
     --color: var(--ion-color-dark);
     transition: background 0.2s ease, color 0.2s ease;
+
+    /* Propriedades Ionic para remover efeitos de clique/foco/ativação */
+    --ion-item-background-activated: transparent; /* Remove o fundo azul/padrão ao ativar/clicar */
+    --ion-item-background-focused: transparent;   /* Remove o fundo azul/padrão ao focar */
+    --ion-item-background-hover: transparent;     /* Remove o fundo ao passar o mouse, se desejar */
+    --ion-item-color-activated: var(--ion-color-dark); /* Mantém a cor do texto padrão */
+    --ion-item-color-focused: var(--ion-color-dark);   /* Mantém a cor do texto padrão */
+    --ion-item-color-hover: var(--ion-color-primary); /* Mantém a cor de hover definida */
+
+    /* Garante que nenhum outline ou box-shadow padrão apareça */
+    outline: none;
+    box-shadow: none;
 
     &:hover {
       --background: rgba(var(--ion-color-primary-rgb), 0.1);
@@ -88,9 +97,113 @@ ion-menu {
   ion-item {
     --color: var(--ion-color-light);
 
+    /* Propriedades Ionic para remover efeitos de clique/foco/ativação no modo escuro */
+    --ion-item-background-activated: transparent; /* Remove o fundo azul/padrão ao ativar/clicar */
+    --ion-item-background-focused: transparent;   /* Remove o fundo azul/padrão ao focar */
+    --ion-item-background-hover: rgba(var(--ion-color-light-rgb), 0.1); /* Mantém o hover claro definido */
+    --ion-item-color-activated: var(--ion-color-light); /* Mantém a cor do texto padrão */
+    --ion-item-color-focused: var(--ion-color-light);   /* Mantém a cor do texto padrão */
+
+    /* Garante que nenhum outline ou box-shadow padrão apareça no modo escuro */
+    outline: none;
+    box-shadow: none;
+
+    /* Estilo de hover para o modo escuro (mantido, pois você pediu para eliminar "efeitos",
+       mas um hover é geralmente esperado. Se quiser remover este também, defina transparent) */
     &:hover {
-      --background: rgba(var(--ion-color-primary-rgb), 0.2);
-      --color: var(--ion-color-primary-shade);
+      --background: rgba(var(--ion-color-light-rgb), 0.1);
+      --color: var(--ion-color-light);
     }
+  }
+}
+
+.custom-loading .loading-spinner {
+  width: 30px;
+  height: 30px;
+}
+
+.custom-loading .loading-wrapper {
+  background: transparent;
+  box-shadow: none;
+}
+ion-menu ion-item:hover {
+    background-color: rgba(0, 0, 255, 0);
+    color: #01499600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.custom-loading {
+  --background: transparent !important;  /* Fundo transparente */
+  --box-shadow: none !important;         /* Remove sombra */
+  text-align: center;
+  color: white;
+  padding: 0 !important;                  /* Remove padding default */
+}
+
+.custom-loading .loading-wrapper {
+  background: transparent !important;    /* Fundo transparente do wrapper */
+  box-shadow: none !important;            /* Remove sombra */
+  padding: 0 !important;
+}
+
+/* A div que envolve a mensagem no loading */
+.custom-loading .loading-message {
+  background: transparent !important;    /* Fundo transparente */
+  color: white !important;
+  padding: 0 !important;
+}
+
+/* Seu wrapper customizado */
+.custom-loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+}
+
+.wave-text {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  animation: wave 2s infinite;
+  text-align: center;
+  color: white;
+}
+
+@keyframes wave {
+  0%, 100% {
+    filter: drop-shadow(0 0 0 #fff);
+  }
+  50% {
+    filter: drop-shadow(0 0 15px #fff);
+  }
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress {
+  width: 0;
+  height: 100%;
+  background: white;
+  border-radius: 4px;
+  animation: loading 3s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
   }
 }

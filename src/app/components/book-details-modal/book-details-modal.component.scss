@@ -1,11 +1,6 @@
-ion-content {
-  --background: #f8f8f8;
-  padding-top: 0;
-  padding-bottom: 0;
-}
 
 .book-detail-card {
-  background: white;
+  background: rgba(255, 255, 255, 0.716);
   margin: 0;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -15,9 +10,11 @@ ion-content {
   display: flex;
   flex-direction: column;
   position: relative; /* Adicionado para posicionamento absoluto do header de fechar */
-}
+  border-color: #1aff0000;
+  border-radius: 20px;
 
-/* NOVO: Estilos para o cabeçalho do botão de fechar */
+}
+    
 .modal-close-header {
   position: absolute;
   top: 10px; /* Distância do topo */
@@ -83,9 +80,9 @@ ion-content {
 
 .info-item {
   --padding-start: 0;
-  --inner-padding-end: 0;
+  --inner-padding-end: 10px ;
   --background: transparent;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eeeeee00;
   padding-bottom: 5px;
   margin-bottom: 10px;
   &:last-of-type {
@@ -99,7 +96,7 @@ ion-content {
   }
 
   .label-title {
-    font-size: 0.8em;
+    font-size: 0.5em;
     color: #999;
     margin-bottom: 2px;
     text-transform: uppercase;

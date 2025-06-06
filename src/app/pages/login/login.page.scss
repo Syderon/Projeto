@@ -30,21 +30,21 @@ ion-content {
   padding: 1rem;
   max-width: 420px;
   width: 100%;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0);
-  color: #e0e0e000;
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0);
+  color: #ffffff00;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0);
 }
 
 .app-subtitle {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--ion-color-secondary);
   margin-top: 0.2rem;
   opacity: 0;
   transform: translateY(10px);
   animation:
-    fadeInSubtitle 0.8s ease-out forwards 3s,
-    blinkHighlight 1.5s ease-in-out infinite 3.8s;
+  fadeInSubtitle 0.8s ease-out forwards 3s,
+  blinkHighlight 1.5s ease-in-out infinite 3.8s;
   background: linear-gradient(90deg, #5b5b5b, #efeded);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -60,19 +60,22 @@ ion-content {
   --background: rgba(0, 0, 0, 0);
   --border-radius: 14px;
   --padding-start: 12px;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem;  
   --color: #ffffffa3;
   --highlight-color-focused: #707070;
   --box-shadow: none;
+   border: 1px solid; /* linha fina */
+  border-color:  rgb(72, 72, 72);
+  border-radius: 10px;
 }
-
+  
 ion-input::part(native) {
-  color: #e0e0e0;
+  color: #ffffff;
   caret-color: #ff4081;
 }
 
 ion-icon {
-  color: #555555; /* cor básica cinza escuro */
+  color: #9d9d9d; /* cor básica cinza escuro */
   background-color: transparent;
   border-radius: 15px;
   position: relative;
@@ -87,7 +90,7 @@ ion-icon {
 }
 
 ion-icon:hover {
-  color: #000000;
+  color: #ffffff;
   transform: scale(1.1);
   filter:
     drop-shadow(0 0 8px rgb(0, 255, 179))
@@ -96,28 +99,33 @@ ion-icon:hover {
 
 .login-button {
   --background: linear-gradient(to right,  rgb(0, 13, 255),  rgb(100, 180, 255));
-  border-radius: 16px;
+  border-radius: 10px;
   font-weight: bold;
   letter-spacing: 1px;
   margin-top: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: white;
+  color: rgb(255, 255, 255);
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .login-button:active {
   transform: scale(1.05);
-  box-shadow: 0 0 10px #5d00ff;
+  box-shadow: 0 0 10px #5d00ff00;
 }
 
 .additional-actions ion-button {
-  font-size: 0.5rem;
+  font-weight:bold ;
+  font-size: 0.8rem;
   color: #ffffffcc;
-  --color-activated: #ff4081;
+  --color-activated: #40b6ff;
+  background-color: transparent !important;
+
 }
 
 ion-text p {
   font-size: 0.75rem;
-  color: #ff4081;
+  color: #fa1616f8;
   margin-left: 0.5rem;
 }
 
@@ -126,7 +134,7 @@ ion-text p {
   text-align: center;
   font-weight: bold;
   font-size: 0.9rem;
-  color: #f03d3d;
+  color: #fa1616f8;
 }
 
 @keyframes typing {
@@ -136,7 +144,7 @@ ion-text p {
 
 @keyframes blink-caret {
   from, to { border-color: transparent; }
-  50% { border-color: rgba(224, 224, 224, 0.8); }
+  50% { border-color: rgba(255, 255, 255, 0.8); }
 }
 
 @keyframes fadeInSubtitle {
@@ -185,7 +193,7 @@ ion-text p {
   }
   
   .app-title {
-    font-size: 1.4rem;
+    font-size: 2rem;
   }
   
   .canvas-container canvas {

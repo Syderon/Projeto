@@ -44,10 +44,17 @@ export class BookDetailsModalComponent implements OnInit {
   
   async lerLivro() {
   if (this.book?.pdfUrl) {
-    await this.navCtrl.navigateForward(`/pdf-viewer?file=${encodeURIComponent(this.book.pdfUrl)}`);
-    this.dismiss();
+    // Abre o PDF em uma nova aba (funciona no navegador e em apps mobile)
+    window.open(this.book.pdfUrl, '_blank');
+    this.dismiss();  // Fecha o modal
   } else {
-    alert('PDF do livro não disponível.');
+    const toast = await this.toastController.create({
+      message: 'PDF não disponível para este livro.',
+      duration: 2000,
+      position: 'bottom',
+      color: 'warning'
+    });
+    toast.present();
   }
   
 }

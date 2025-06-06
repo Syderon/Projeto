@@ -13,6 +13,7 @@ interface Livro {
   autor?: string;
   ano?: number;
   descricao?: string;
+  pdfUrl?: string;
 }
 
 @Component({
@@ -43,8 +44,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'destaque1',
       autor: 'Fiódor Dostoiévski',
       ano: 1864,
-      descricao: 'Uma obra que explora a mente de um homem solitário, que vive em isolamento e se questiona sobre a vida, a sociedade e a natureza humana.'
-      
+      descricao: 'Uma obra que explora a mente de um homem solitário, que vive em isolamento e se questiona sobre a vida, a sociedade e a natureza humana.',
+      pdfUrl: 'https://drive.google.com/file/d/1KgZgweA2X-CwquLSktHAez58f8xqedUn/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'Crime e Castigo',
@@ -52,7 +53,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'destaque2',
       autor: 'Fiódor Dostoiévski',
       ano: 1866,
-      descricao: 'Um rapaz retraído e orgulhoso, se sente esmagado pela pobreza. Ao mesmo tempo, acha que está destinado a um grande futuro.'
+      descricao: 'Um rapaz retraído e orgulhoso, se sente esmagado pela pobreza. Ao mesmo tempo, acha que está destinado a um grande futuro.',
+      pdfUrl: 'https://drive.google.com/file/d/1VoalNBpUjti9iMXUPwp8eEnqKBbEQUCy/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'O Idiota',
@@ -60,7 +62,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'destaque3',
       autor: 'Fiódor Dostoiévski',
       ano: 1869,
-      descricao: 'Explora a sociedade russa do século XIX e a complexidade humana, focando no Príncipe Míchkin.'
+      descricao: 'Explora a sociedade russa do século XIX e a complexidade humana, focando no Príncipe Míchkin.',
+      pdfUrl: 'https://drive.google.com/file/d/1QrsyXMBlTnR_H9ICnfRePHapMpZvFCX3/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'A Revolução dos Bichos',
@@ -68,7 +71,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'destaque4',
       autor: 'George Orwell',
       ano: 1945,
-      descricao: 'Sátira política que critica o totalitarismo através de uma fábula sobre animais.'
+      descricao: 'Sátira política que critica o totalitarismo através de uma fábula sobre animais.',
+      pdfUrl: 'https://drive.google.com/file/d/1aCRWI-uzzScNvmwOlGB_g_EqU7YiuBKt/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'Orgulho e Preconceito',
@@ -76,7 +80,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'destaque5',
       autor: 'Jane Austen',
       ano: 1813,
-      descricao: 'Clássico romance que aborda questões de classe social, moral e relacionamentos.'
+      descricao: 'Clássico romance que aborda questões de classe social, moral e relacionamentos.',
+      pdfUrl: 'https://drive.google.com/file/d/152fD0g3ZbcYt4h6trmoXbjzpY0P_b75_/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'Frankenstein',
@@ -84,7 +89,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'destaque6',
       autor: 'Mary Shelley',
       ano: 1818,
-      descricao: 'Considerado o primeiro romance de ficção científica, explora os limites da criação humana.'
+      descricao: 'Considerado o primeiro romance de ficção científica, explora os limites da criação humana.',
+      pdfUrl: 'https://drive.google.com/file/d/13Sq2HUwOLI7SJGj6ViK1S4jrWbgzUaBd/view?usp=drive_link'  // Link do Google Drive
     },
   ];
 
@@ -95,7 +101,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'lido1',
       autor: 'John Ronald Reuel Tolkien',
       ano: 1955,
-      descricao: 'Em O Retorno do Rei, acompanhamos o mago Gandalf e o hobbit Pippin em sua visita à a majestosa cidade de Minas Tirith.'
+      descricao: 'Em O Retorno do Rei, acompanhamos o mago Gandalf e o hobbit Pippin em sua visita à a majestosa cidade de Minas Tirith.',
+      pdfUrl: 'https://drive.google.com/file/d/1roRnO_CU6aMGf-B1DU7KkXa2PCMxIvdi/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'O Pequeno Principe',
@@ -103,7 +110,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'lido3',
       autor: 'Antoine de Saint-Exupéry',
       ano: 1943,
-      descricao: 'Um aviador que, após sofrer uma pane em seu avião no deserto, conhece um menino que veio de um planeta chamado B-612.'
+      descricao: 'Um aviador que, após sofrer uma pane em seu avião no deserto, conhece um menino que veio de um planeta chamado B-612.',
+      pdfUrl: 'https://drive.google.com/file/d/1xjpRQ6gUkbqy03QU-qJruNJUEnM9QYsv/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'O Corvo',
@@ -111,7 +119,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'lido4',
       autor: 'Edgar Allan Poe',
       ano: 1845,
-      descricao: 'Trata da visita misteriosa de um corvo falante a um homem, frequentemente identificado como estudante, que lamenta a perda de sua amada, Lenore.'
+      descricao: 'Trata da visita misteriosa de um corvo falante a um homem, frequentemente identificado como estudante, que lamenta a perda de sua amada, Lenore.',
+      pdfUrl: 'https://drive.google.com/file/d/1-j-PFraxmWyPfhbwxB0dnxN_GKgqI-no/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'Verity',
@@ -119,7 +128,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'lido5',
       autor: 'Colleen Hoover',
       ano: 2018,
-      descricao: 'Conta a história de Lowen Ashleigh, uma escritora que é contratada para terminar a série de livros da autora Verity Crawford, que ficou incapacitada após um acidente.'
+      descricao: 'Conta a história de Lowen Ashleigh, uma escritora que é contratada para terminar a série de livros da autora Verity Crawford, que ficou incapacitada após um acidente.',
+      pdfUrl: 'https://drive.google.com/file/d/1nqQjE_DHLabeMDiSV-TA0RpCHoE3PZeB/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'Capitães da Areia',
@@ -127,7 +137,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'lido6',
       autor: 'Jorge Amado',
       ano: 1937,
-      descricao: 'Retrato da vida de menores abandonados em Salvador nos anos 1930.'
+      descricao: 'Retrato da vida de menores abandonados em Salvador nos anos 1930.',
+      pdfUrl: 'https://drive.google.com/file/d/1yTmVRe5O5tGRVIh6Oc_SQmqPc9hM4E-d/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'Cem Anos de Solidão',
@@ -135,7 +146,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'lido7',
       autor: 'Gabriel García Márquez',
       ano: 1967,
-      descricao: 'Obra-prima do realismo mágico que conta a saga da família Buendía.'
+      descricao: 'Obra-prima do realismo mágico que conta a saga da família Buendía.',
+      pdfUrl: 'https://drive.google.com/file/d/1-PQ-3xm1buYerK8VflM2HgOW1IobwlbG/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'O Senhor dos Anéis',
@@ -143,7 +155,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'lido8',
       autor: 'J.R.R. Tolkien',
       ano: 1954,
-      descricao: 'Épico de fantasia que se tornou um dos livros mais influentes do século XX.'
+      descricao: 'Épico de fantasia que se tornou um dos livros mais influentes do século XX.',
+      pdfUrl: 'https://drive.google.com/file/d/1XBei5_riFGsQwnh7X9nq_0LTJb8cu44d/view?usp=drive_link'  // Link do Google Drive
     },
   ];
 
@@ -154,7 +167,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'recente1',
       autor: 'José Saramago',
       ano: 1995,
-      descricao: 'Alegoria sobre a fragilidade humana quando uma epidemia de cegueira atinge uma cidade.'
+      descricao: 'Alegoria sobre a fragilidade humana quando uma epidemia de cegueira atinge uma cidade.',
+      pdfUrl: 'https://drive.google.com/file/d/12OLhEt_d7Yyn86z2Uy_FZcYokCXfOFg9/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'It: A Coisa',
@@ -162,7 +176,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'recente2',
       autor: 'Stephen King',
       ano: 1986,
-      descricao: 'Terror psicológico sobre um grupo de amigos que enfrenta uma entidade maligna.'
+      descricao: 'Terror psicológico sobre um grupo de amigos que enfrenta uma entidade maligna.',
+      pdfUrl: 'https://drive.google.com/file/d/1Vyo4QiwsmWTqGgumWUiSvbvl4TeH4Wlm/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'O Conto da Aia',
@@ -170,7 +185,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'recente3',
       autor: 'Margaret Atwood',
       ano: 1985,
-      descricao: 'Distopia feminista sobre um futuro onde as mulheres são controladas pelo estado.'
+      descricao: 'Distopia feminista sobre um futuro onde as mulheres são controladas pelo estado.',
+      pdfUrl: 'https://drive.google.com/file/d/113lQit8sMlSM40XM3XaSpieR5b3VKPX6/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'Drácula',
@@ -178,7 +194,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'recente4',
       autor: 'Bram Stoker',
       ano: 1897,
-      descricao: 'O romance epistolar que popularizou o mito do vampiro na cultura ocidental.'
+      descricao: 'O romance epistolar que popularizou o mito do vampiro na cultura ocidental.',
+      pdfUrl: 'https://drive.google.com/file/d/1T7aylKo2Gb9KDEbW3K4SapmSG_RaqtAK/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'Percy Jackson',
@@ -186,7 +203,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'recente5',
       autor: 'Rick Riordan',
       ano: 2005,
-      descricao: 'Aventura moderna que mistura mitologia grega com o mundo contemporâneo.'
+      descricao: 'Aventura moderna que mistura mitologia grega com o mundo contemporâneo.',
+      pdfUrl: 'https://drive.google.com/file/d/1YovNRAnqVCL-crcDvbWIztOXLxVVCg3S/view?usp=drive_link'  // Link do Google Drive
     },
     {
       titulo: 'As Crônicas de Nárnia',
@@ -194,7 +212,8 @@ export class HomePage implements OnInit, OnDestroy {
       id: 'recente6',
       autor: 'C.S. Lewis',
       ano: 1950,
-      descricao: 'Série de fantasia que transporta crianças para um mundo mágico cheio de aventuras.'
+      descricao: 'Série de fantasia que transporta crianças para um mundo mágico cheio de aventuras.',
+      pdfUrl: 'https://drive.google.com/file/d/1mUF6oC3BPC1GHR0FLsp81GkrIZwgBoY_/view?usp=drive_link'  // Link do Google Drive
     },
   ];
 
